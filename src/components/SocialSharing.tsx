@@ -64,7 +64,7 @@ export const SocialSharing: React.FC = () => {
         </SectionHeader>
 
         {/* Share Buttons Row */}
-        <StaggerContainer staggerDelay={0.1} delay={0.2} className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5 md:gap-4 max-w-2xl md:max-w-3xl mx-auto w-full">
+        <StaggerContainer staggerDelay={0.1} delay={0.2} className="flex flex-wrap justify-center gap-2.5 sm:gap-3.5 md:gap-4 max-w-2xl md:max-w-3xl mx-auto w-full lg:grid lg:grid-cols-4">
           {/* WhatsApp Button */}
           <StaggerItem variant="scale">
             <button

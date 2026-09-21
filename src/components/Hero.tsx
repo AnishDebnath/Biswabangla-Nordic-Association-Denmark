@@ -102,9 +102,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="my-2 sm:my-3 md:my-5"
+          className="my-3 sm:my-4 md:my-6"
         >
-          <span className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-['Noto_Serif_Bengali'] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FFF9EF] via-[#D4AF62] to-[#FFF9EF] drop-shadow-md py-1">
+          <span className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-['Noto_Serif_Bengali'] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FFF9EF] via-[#D4AF62] to-[#FFF9EF] drop-shadow-md py-2 sm:py-3 leading-[1.1]">
             {eventConfig.hero.bengaliGreeting}
           </span>
           <p className="text-xs sm:text-sm md:text-base font-['Hind_Siliguri'] text-[#D4AF62]/90 mt-1 md:mt-2 tracking-wider">

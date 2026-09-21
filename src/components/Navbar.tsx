@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { Menu, X, Volume2, VolumeX, Share2, Calendar, MapPin } from 'lucide-react';
 import { festiveAudio } from '../utils/ambientSound';
 
@@ -37,13 +38,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp, onOpenShare }) => {
   ];
 
   return (
-    <header
+    <motion.header
       id="main-navbar"
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#FFF9EF]/90 backdrop-blur-md border-b border-[#D4AF62]/30 shadow-sm py-3 text-[#171313]'
-          : 'bg-gradient-to-b from-[#171313]/80 via-[#171313]/40 to-transparent py-4 text-[#FFF9EF]'
-      }`}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled
+        ? 'bg-[#FFF9EF]/90 backdrop-blur-md border-b border-[#D4AF62]/30 shadow-sm py-3 text-[#171313]'
+        : 'bg-gradient-to-b from-[#171313]/80 via-[#171313]/40 to-transparent py-4 text-[#FFF9EF]'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand / Logo */}
@@ -51,20 +54,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp, onOpenShare }) => {
           href="#hero"
           className="flex items-center gap-2 group text-left cursor-pointer"
         >
-          <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-colors ${
-            isScrolled ? 'border-[#B8863B] text-[#8E2424] bg-[#F7F0E4]' : 'border-[#D4AF62] text-[#D4AF62] bg-[#171313]/50'
-          }`}>
+          <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-colors ${isScrolled ? 'border-[#B8863B] text-[#8E2424] bg-[#F7F0E4]' : 'border-[#D4AF62] text-[#D4AF62] bg-[#171313]/50'
+            }`}>
             <span className="font-['Noto_Serif_Bengali'] font-bold text-sm">মা</span>
           </div>
           <div>
-            <div className={`text-xs uppercase tracking-[0.2em] font-semibold leading-none ${
-              isScrolled ? 'text-[#8E2424]' : 'text-[#D4AF62]'
-            }`}>
+            <div className={`text-xs uppercase tracking-[0.2em] font-semibold leading-none ${isScrolled ? 'text-[#8E2424]' : 'text-[#D4AF62]'
+              }`}>
               Biswabangla Nordic
             </div>
-            <div className={`text-[10px] tracking-wider opacity-80 leading-tight ${
-              isScrolled ? 'text-[#171313]' : 'text-[#FFF9EF]'
-            }`}>
+            <div className={`text-[10px] tracking-wider opacity-80 leading-tight ${isScrolled ? 'text-[#171313]' : 'text-[#FFF9EF]'
+              }`}>
               Durga Puja 2026 • Denmark
             </div>
           </div>
@@ -76,9 +76,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp, onOpenShare }) => {
             <a
               key={link.href}
               href={link.href}
-              className={`transition-colors py-1 relative hover:text-[#B8863B] ${
-                isScrolled ? 'text-[#171313]/85' : 'text-[#FFF9EF]/90'
-              }`}
+              className={`transition-colors py-1 relative hover:text-[#B8863B] ${isScrolled ? 'text-[#171313]/85' : 'text-[#FFF9EF]/90'
+                }`}
             >
               {link.label}
             </a>
@@ -92,13 +91,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp, onOpenShare }) => {
             id="ambient-sound-toggle-btn"
             onClick={toggleSound}
             title={isPlayingAudio ? 'Mute ambient festive melody' : 'Play peaceful festive melody'}
-            className={`p-2 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 text-xs ${
-              isPlayingAudio
-                ? 'bg-[#8E2424] text-[#FFF9EF] border-[#B8863B] animate-pulse'
-                : isScrolled
+            className={`p-2 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 text-xs ${isPlayingAudio
+              ? 'bg-[#8E2424] text-[#FFF9EF] border-[#B8863B] animate-pulse'
+              : isScrolled
                 ? 'border-[#D4AF62]/40 text-[#641A1A] hover:bg-[#F7F0E4]'
                 : 'border-[#FFF9EF]/30 text-[#FFF9EF] hover:bg-white/10'
-            }`}
+              }`}
             aria-label="Toggle ambient festive sound"
           >
             {isPlayingAudio ? (
@@ -118,11 +116,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp, onOpenShare }) => {
           <button
             id="nav-share-btn"
             onClick={onOpenShare}
-            className={`p-2 rounded-full border transition-all cursor-pointer ${
-              isScrolled
-                ? 'border-[#D4AF62]/40 text-[#641A1A] hover:bg-[#F7F0E4]'
-                : 'border-[#FFF9EF]/30 text-[#FFF9EF] hover:bg-white/10'
-            }`}
+            className={`p-2 rounded-full border transition-all cursor-pointer ${isScrolled
+              ? 'border-[#D4AF62]/40 text-[#641A1A] hover:bg-[#F7F0E4]'
+              : 'border-[#FFF9EF]/30 text-[#FFF9EF] hover:bg-white/10'
+              }`}
             aria-label="Share festival invitation"
             title="Share invitation"
           >
@@ -142,9 +139,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp, onOpenShare }) => {
           <button
             id="mobile-nav-toggle-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-md transition-colors ${
-              isScrolled ? 'text-[#171313]' : 'text-[#FFF9EF]'
-            }`}
+            className={`lg:hidden p-2 rounded-md transition-colors ${isScrolled ? 'text-[#171313]' : 'text-[#FFF9EF]'
+              }`}
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -157,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp, onOpenShare }) => {
         <div className="lg:hidden bg-[#FFF9EF] border-b border-[#D4AF62]/40 shadow-xl px-6 py-6 text-[#171313] animate-fadeIn">
           <div className="flex flex-col space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-[#D4AF62]/30">
-              <span className="font-['Noto_Serif_Bengali'] font-bold text-lg text-[#8E2424]">
+              <span className="font-['Noto_Serif_Bengali'] font-bold text-lg text-[#8E2424] py-1 leading-[1.1]">
                 শুভ শারদীয়া ২০২৬
               </span>
               <span className="text-xs uppercase tracking-wider text-[#B8863B] font-semibold">
@@ -199,6 +195,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp, onOpenShare }) => {
           </div>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 };

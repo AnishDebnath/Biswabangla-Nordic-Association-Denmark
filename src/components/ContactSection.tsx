@@ -49,7 +49,7 @@ export const ContactSection: React.FC = () => {
           </p>
         </SectionHeader>
 
-        <StaggerContainer staggerDelay={0.15} delay={0.2} className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-start">
+        <StaggerContainer staggerDelay={0.15} delay={0.2} className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-start">
           {/* Contact Details Card */}
           <StaggerItem variant="fadeRight" className="bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-sm space-y-5 sm:space-y-6 md:space-y-8">
             <div>

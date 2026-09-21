@@ -95,11 +95,11 @@ export const OpeningExperience: React.FC<OpeningExperienceProps> = ({ onEnter, i
             <p className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#8E2424] font-semibold mb-1 sm:mb-2">
               Biswabangla Nordic Association • Denmark
             </p>
-            
+
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#641A1A] font-medium tracking-tight mb-1 sm:mb-2">
               5th Annual Durga Puja
             </h1>
-            
+
             <p className="text-xs sm:text-sm font-serif italic text-[#B8863B] mb-3 sm:mb-5 tracking-widest">
               — 2026 —
             </p>
@@ -107,7 +107,7 @@ export const OpeningExperience: React.FC<OpeningExperienceProps> = ({ onEnter, i
             <AlponaDivider className="my-3 sm:my-4 max-w-xs" />
 
             <div className="my-4 sm:my-6">
-              <span className="inline-block text-3xl sm:text-4xl md:text-5xl font-['Noto_Serif_Bengali'] font-bold text-[#8E2424] drop-shadow-sm tracking-wide">
+              <span className="inline-block text-3xl sm:text-4xl md:text-5xl font-['Noto_Serif_Bengali'] font-bold text-[#8E2424] drop-shadow-sm tracking-wide py-1.5 leading-[1.1]">
                 শুভ শারদীয়া
               </span>
               <p className="text-xs md:text-sm font-['Noto_Serif_Bengali'] text-[#641A1A]/80 mt-1.5 sm:mt-2 font-medium">

@@ -22,7 +22,7 @@ export const InvitationMessage: React.FC = () => {
         <Countdown />
       </div>
 
-      <div className="max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto relative z-10 w-full mt-10 md:mt-30 lg:mt-60">
+      <div className="max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto relative z-10 w-full mt-20 md:mt-30 lg:mt-60">
         {/* Invitation Card Outer Frame with Scandinavian & Bengali Elegance */}
         <div className="relative bg-[#FFF9EF]/90 border-2 border-[#D4AF62]/70 rounded-2xl sm:rounded-3xl md:rounded-[2rem] p-5 sm:p-8 md:p-12 lg:p-16 shadow-2xl backdrop-blur-sm overflow-hidden">
           {/* Subtle Background Pattern Texture in Card with automatic drift */}
