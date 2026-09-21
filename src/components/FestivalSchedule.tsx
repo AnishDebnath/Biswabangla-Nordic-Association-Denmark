@@ -4,6 +4,7 @@ import { eventConfig } from '../data/eventConfig';
 import { Calendar, Clock, ChevronDown, ChevronUp, Sparkles, Star } from 'lucide-react';
 import { AlponaDivider } from './DecorativeAlpona';
 import { ScrollSection } from './ScrollSection';
+import { SectionHeader, AnimatedGrid, AnimatedCard } from './AnimationUtils';
 
 export const FestivalSchedule: React.FC = () => {
   const [selectedDayKey, setSelectedDayKey] = useState<string>('ashtami');
@@ -28,7 +29,7 @@ export const FestivalSchedule: React.FC = () => {
       showMandala={false}
     >
       {/* Section Header */}
-      <div className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
+      <SectionHeader delay={0.1} className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
         <div className="inline-flex items-center gap-1.5 md:gap-2 text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-[#8E2424] font-semibold mb-1 md:mb-2">
           <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#B8863B]" />
           <span>5-Day Comprehensive Timeline</span>
@@ -47,30 +48,30 @@ export const FestivalSchedule: React.FC = () => {
         <p className="text-xs sm:text-sm md:text-base text-[#171313]/70 font-normal px-2 max-w-prose md:max-w-2xl mx-auto text-center">
           Daily ritual timings, Pushpanjali batches, community Bhog, and evening cultural celebrations.
         </p>
-      </div>
+      </SectionHeader>
 
       {/* DESKTOP & TABLET VIEW: Day Selector Tabs */}
-      <div className="hidden md:grid grid-cols-5 gap-2 md:gap-2.5 lg:gap-4 xl:gap-5 mb-6 md:mb-8 lg:mb-10">
-        {eventConfig.schedule.map((day) => {
+      <AnimatedGrid staggerDelay={0.08} delay={0.2} className="hidden md:grid grid-cols-5 gap-2 md:gap-2.5 lg:gap-4 xl:gap-5 mb-6 md:mb-8 lg:mb-10">
+        {eventConfig.schedule.map((day, index) => {
           const isSelected = day.dayKey === selectedDayKey;
           const isAshtami = day.dayKey === 'ashtami';
 
           return (
-            <button
+            <AnimatedCard
               key={day.dayKey}
-              onClick={() => setSelectedDayKey(day.dayKey)}
-              className={`relative text-left p-2.5 md:p-3 lg:p-4 xl:p-5 rounded-xl md:rounded-2xl lg:rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[135px] md:min-h-[150px] lg:min-h-[170px] ${
-                isSelected
+              index={index}
+              variant="scale"
+              className={`relative text-left p-2.5 md:p-3 lg:p-4 xl:p-5 rounded-xl md:rounded-2xl lg:rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[135px] md:min-h-[150px] lg:min-h-[170px] ${isSelected
                   ? 'bg-[#8E2424] text-[#FFF9EF] border-[#D4AF62] shadow-lg scale-[1.02] lg:scale-[1.03]'
                   : isAshtami
-                  ? 'bg-[#F7F0E4] border-[#B8863B] text-[#641A1A] hover:bg-[#8E2424]/10'
-                  : 'bg-[#FFF9EF] border-[#D4AF62]/40 text-[#171313] hover:border-[#B8863B]'
-              }`}
+                    ? 'bg-[#F7F0E4] border-[#B8863B] text-[#641A1A] hover:bg-[#8E2424]/10'
+                    : 'bg-[#FFF9EF] border-[#D4AF62]/40 text-[#171313] hover:border-[#B8863B]'
+                }`}
+              onClick={() => setSelectedDayKey(day.dayKey)}
             >
               {day.badge ? (
-                <span className={`text-[8px] md:text-[8px] lg:text-[9px] xl:text-[10px] font-bold uppercase tracking-wider px-1.5 md:px-2 py-0.5 rounded-full mb-1.5 inline-block max-w-full truncate whitespace-nowrap ${
-                  isSelected ? 'bg-[#D4AF62] text-[#171313]' : 'bg-[#8E2424] text-[#FFF9EF]'
-                }`}>
+                <span className={`text-[8px] md:text-[8px] lg:text-[9px] xl:text-[10px] font-bold uppercase tracking-wider px-1.5 md:px-2 py-0.5 rounded-full mb-1.5 inline-block max-w-full truncate whitespace-nowrap ${isSelected ? 'bg-[#D4AF62] text-[#171313]' : 'bg-[#8E2424] text-[#FFF9EF]'
+                  }`}>
                   {day.badge}
                 </span>
               ) : (
@@ -78,9 +79,8 @@ export const FestivalSchedule: React.FC = () => {
               )}
 
               <div>
-                <span className={`text-[9px] md:text-[10px] lg:text-xs font-bold uppercase tracking-widest block ${
-                  isSelected ? 'text-[#D4AF62]' : 'text-[#8E2424]'
-                }`}>
+                <span className={`text-[9px] md:text-[10px] lg:text-xs font-bold uppercase tracking-widest block ${isSelected ? 'text-[#D4AF62]' : 'text-[#8E2424]'
+                  }`}>
                   {day.dayNumber}
                 </span>
 
@@ -88,22 +88,20 @@ export const FestivalSchedule: React.FC = () => {
                   {day.dayName}
                 </h3>
 
-                <p className={`text-[10px] md:text-xs lg:text-sm font-['Noto_Serif_Bengali'] mt-0.5 font-medium truncate ${
-                  isSelected ? 'text-[#FFF9EF]/90' : 'text-[#641A1A]'
-                }`}>
+                <p className={`text-[10px] md:text-xs lg:text-sm font-['Noto_Serif_Bengali'] mt-0.5 font-medium truncate ${isSelected ? 'text-[#FFF9EF]/90' : 'text-[#641A1A]'
+                  }`}>
                   {day.bengaliName.split('—')[0]}
                 </p>
               </div>
 
-              <div className={`text-[10px] md:text-[11px] lg:text-xs mt-2 pt-1.5 border-t font-sans whitespace-nowrap ${
-                isSelected ? 'border-[#FFF9EF]/20 text-[#FFF9EF]/80' : 'border-[#D4AF62]/30 text-[#171313]/60'
-              }`}>
+              <div className={`text-[10px] md:text-[11px] lg:text-xs mt-2 pt-1.5 border-t font-sans whitespace-nowrap ${isSelected ? 'border-[#FFF9EF]/20 text-[#FFF9EF]/80' : 'border-[#D4AF62]/30 text-[#171313]/60'
+                }`}>
                 {day.dateStr}
               </div>
-            </button>
+            </AnimatedCard>
           );
         })}
-      </div>
+      </AnimatedGrid>
 
       {/* DESKTOP VIEW: Selected Day Detailed Content Card */}
       <div className="hidden md:block">
@@ -114,11 +112,10 @@ export const FestivalSchedule: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
-            className={`rounded-3xl md:rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-12 border ${
-              selectedDay.dayKey === 'ashtami'
-                ? 'bg-[#FFF9EF] border-2 border-[#D4AF62] shadow-xl'
-                : 'bg-[#FFF9EF]/95 border-[#D4AF62]/50 shadow-md'
-            }`}
+            className={`rounded-3xl md:rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-12 border ${selectedDay.dayKey === 'ashtami'
+              ? 'bg-[#FFF9EF] border-2 border-[#D4AF62] shadow-xl'
+              : 'bg-[#FFF9EF]/95 border-[#D4AF62]/50 shadow-md'
+              }`}
           >
             {/* Day Header Banner */}
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 md:pb-8 md:mb-8 border-b border-[#D4AF62]/40">
@@ -160,11 +157,10 @@ export const FestivalSchedule: React.FC = () => {
               {selectedDay.events.map((event, idx) => (
                 <div
                   key={idx}
-                  className={`p-4 md:p-5 lg:p-6 rounded-2xl md:rounded-3xl border transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
-                    event.isHighlight
-                      ? 'bg-[#8E2424]/10 border-[#8E2424]/40 shadow-sm'
-                      : 'bg-[#FFF9EF] border-[#D4AF62]/30'
-                  }`}
+                  className={`p-4 md:p-5 lg:p-6 rounded-2xl md:rounded-3xl border transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${event.isHighlight
+                    ? 'bg-[#8E2424]/10 border-[#8E2424]/40 shadow-sm'
+                    : 'bg-[#FFF9EF] border-[#D4AF62]/30'
+                    }`}
                 >
                   <div className="flex items-start gap-4 md:gap-5">
                     {/* Time Tag */}
@@ -213,11 +209,10 @@ export const FestivalSchedule: React.FC = () => {
           return (
             <div
               key={day.dayKey}
-              className={`rounded-2xl border overflow-hidden transition-all ${
-                isAshtami
-                  ? 'border-2 border-[#D4AF62] bg-[#FFF9EF] shadow-md'
-                  : 'border-[#D4AF62]/50 bg-[#FFF9EF]/95'
-              }`}
+              className={`rounded-2xl border overflow-hidden transition-all ${isAshtami
+                ? 'border-2 border-[#D4AF62] bg-[#FFF9EF] shadow-md'
+                : 'border-[#D4AF62]/50 bg-[#FFF9EF]/95'
+                }`}
             >
               {/* Accordion Toggle Header */}
               <button
@@ -282,11 +277,10 @@ export const FestivalSchedule: React.FC = () => {
                       {day.events.map((event, idx) => (
                         <div
                           key={idx}
-                          className={`p-2.5 rounded-xl border ${
-                            event.isHighlight
-                              ? 'bg-[#8E2424]/10 border-[#8E2424]/40'
-                              : 'bg-[#FFF9EF] border-[#D4AF62]/30'
-                          }`}
+                          className={`p-2.5 rounded-xl border ${event.isHighlight
+                            ? 'bg-[#8E2424]/10 border-[#8E2424]/40'
+                            : 'bg-[#FFF9EF] border-[#D4AF62]/30'
+                            }`}
                         >
                           <div className="flex items-center gap-2 mb-1.5 flex-wrap sm:flex-nowrap">
                             <span className="px-2 py-0.5 rounded bg-[#8E2424] text-[#FFF9EF] text-[10px] font-bold whitespace-nowrap shrink-0">

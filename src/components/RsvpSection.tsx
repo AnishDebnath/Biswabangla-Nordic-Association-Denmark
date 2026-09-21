@@ -4,6 +4,7 @@ import { Check, CheckCircle2, Heart, Calendar, Users, Utensils, Mail, Phone, Use
 import { AlponaDivider } from './DecorativeAlpona';
 import { ScrollSection } from './ScrollSection';
 import { CustomDropdown } from './CustomDropdown';
+import { SectionHeader, StaggerContainer, StaggerItem } from './AnimationUtils';
 
 interface RsvpData {
   fullName: string;
@@ -131,7 +132,7 @@ export const RsvpSection: React.FC = () => {
     >
       <div className="max-w-4xl xl:max-w-5xl mx-auto relative z-10 w-full">
         {/* Section Header */}
-        <div className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
+        <SectionHeader delay={0.1} className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
           <div className="inline-flex items-center gap-1.5 md:gap-2 text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-[#8E2424] font-semibold mb-1 md:mb-2">
             <Heart className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#B8863B]" />
             <span>Join Our Celebration</span>
@@ -150,10 +151,10 @@ export const RsvpSection: React.FC = () => {
           <p className="text-xs sm:text-sm md:text-base text-[#171313]/75 font-normal max-w-prose md:max-w-xl mx-auto px-2 text-center">
             Please kindly confirm your attendance to help our hospitality and Bhog planning team welcome you seamlessly.
           </p>
-        </div>
+        </SectionHeader>
 
         {/* Dynamic Form / Confirmation Card */}
-        <div className="bg-[#FFF9EF]/95 border border-[#D4AF62]/60 rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-10 lg:p-12 shadow-xl backdrop-blur-md">
+        <StaggerContainer staggerDelay={0.08} delay={0.2} className="bg-[#FFF9EF]/95 border border-[#D4AF62]/60 rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-10 lg:p-12 shadow-xl backdrop-blur-md">
           <AnimatePresence mode="wait">
             {isSubmitted && submittedData ? (
               <motion.div
@@ -236,7 +237,7 @@ export const RsvpSection: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 md:space-y-8">
                 {/* Name, Email & Phone in responsive grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 md:gap-6">
+                <StaggerItem variant="fadeUp" className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 md:gap-6">
                   {/* Full Name */}
                   <div>
                     <label className="block text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider text-[#171313] mb-1 md:mb-1.5 flex items-center gap-1.5">
@@ -284,10 +285,10 @@ export const RsvpSection: React.FC = () => {
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 md:py-3.5 rounded-xl md:rounded-2xl bg-[#FFF9EF] border border-[#D4AF62]/50 text-sm md:text-base text-[#171313] focus:outline-none focus:ring-2 focus:ring-[#8E2424] focus:border-transparent transition-all placeholder:text-[#171313]/40"
                     />
                   </div>
-                </div>
+                </StaggerItem>
 
                 {/* Party Size & Dietary Preferences */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 md:gap-6">
+                <StaggerItem variant="fadeUp" className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 md:gap-6">
                   {/* Number of Adults */}
                   <CustomDropdown
                     id="rsvp-adults-dropdown"
@@ -328,10 +329,10 @@ export const RsvpSection: React.FC = () => {
                       { value: 'jain', label: 'No Onion / No Garlic', sublabel: 'Sattvic Bhog' },
                     ]}
                   />
-                </div>
+                </StaggerItem>
 
                 {/* Which Days Will You Attend? */}
-                <div>
+                <StaggerItem variant="fadeUp">
                   <label className="block text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider text-[#171313] mb-1.5 md:mb-2 flex items-center justify-between">
                     <span className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5 text-[#8E2424]" />
@@ -351,19 +352,16 @@ export const RsvpSection: React.FC = () => {
                           type="button"
                           key={day.key}
                           onClick={() => handleDayToggle(day.key)}
-                          className={`p-3 sm:p-3.5 md:p-4 rounded-xl sm:rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
-                            isLastItem ? 'col-span-2 sm:col-span-1' : 'col-span-1'
-                          } ${
-                            isChecked
+                          className={`p-3 sm:p-3.5 md:p-4 rounded-xl sm:rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${isLastItem ? 'col-span-2 sm:col-span-1' : 'col-span-1'
+                            } ${isChecked
                               ? 'bg-[#8E2424] text-[#FFF9EF] border-[#D4AF62] shadow-sm'
                               : 'bg-[#FFF9EF] text-[#171313] border-[#D4AF62]/40 hover:border-[#B8863B]'
-                          }`}
+                            }`}
                         >
                           <div className="flex items-center justify-between">
                             <span className="text-xs sm:text-sm md:text-base font-bold font-serif">{day.label}</span>
-                            <div className={`w-4 h-4 rounded flex items-center justify-center ${
-                              isChecked ? 'bg-[#D4AF62] text-[#171313]' : 'border border-[#D4AF62]'
-                            }`}>
+                            <div className={`w-4 h-4 rounded flex items-center justify-center ${isChecked ? 'bg-[#D4AF62] text-[#171313]' : 'border border-[#D4AF62]'
+                              }`}>
                               {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                             </div>
                           </div>
@@ -379,10 +377,10 @@ export const RsvpSection: React.FC = () => {
                       );
                     })}
                   </div>
-                </div>
+                </StaggerItem>
 
                 {/* Message / Special Request */}
-                <div>
+                <StaggerItem variant="fadeUp">
                   <label className="block text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider text-[#171313] mb-1 md:mb-1.5 flex items-center gap-1.5">
                     <MessageSquare className="w-3.5 h-3.5 text-[#8E2424]" />
                     <span>Special Requests / Message</span>
@@ -394,10 +392,10 @@ export const RsvpSection: React.FC = () => {
                     placeholder="Let us know if you'd like to participate, sponsor, or have requests..."
                     className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl md:rounded-2xl bg-[#FFF9EF] border border-[#D4AF62]/50 text-sm md:text-base text-[#171313] focus:outline-none focus:ring-2 focus:ring-[#8E2424] focus:border-transparent transition-all placeholder:text-[#171313]/40"
                   />
-                </div>
+                </StaggerItem>
 
                 {/* Submit Button */}
-                <div className="pt-2 md:pt-4 text-center">
+                <StaggerItem variant="fadeUp" className="pt-2 md:pt-4 text-center">
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -412,11 +410,11 @@ export const RsvpSection: React.FC = () => {
                       </>
                     )}
                   </button>
-                </div>
+                </StaggerItem>
               </form>
             )}
           </AnimatePresence>
-        </div>
+        </StaggerContainer>
       </div>
     </ScrollSection>
   );

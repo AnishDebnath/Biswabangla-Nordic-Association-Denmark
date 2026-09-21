@@ -3,6 +3,7 @@ import { MapPin, Navigation, Compass, Train } from 'lucide-react';
 import { eventConfig } from '../data/eventConfig';
 import { AlponaDivider } from './DecorativeAlpona';
 import { ScrollSection } from './ScrollSection';
+import { SectionHeader, StaggerContainer, StaggerItem } from './AnimationUtils';
 
 export const VenueMap: React.FC = () => {
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
@@ -18,7 +19,7 @@ export const VenueMap: React.FC = () => {
     >
       <div className="max-w-6xl xl:max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
+        <SectionHeader delay={0.1} className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
           <div className="inline-flex items-center gap-1.5 md:gap-2 text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-[#8E2424] font-semibold mb-1 md:mb-2">
             <Compass className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#B8863B]" />
             <span>Venue & Location</span>
@@ -37,11 +38,11 @@ export const VenueMap: React.FC = () => {
           <p className="text-xs sm:text-sm md:text-base text-[#171313]/75 font-normal max-w-prose md:max-w-xl mx-auto px-2 text-center">
             Conveniently situated in greater Copenhagen with seamless metro, bus, and vehicle accessibility.
           </p>
-        </div>
+        </SectionHeader>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-stretch">
+        <StaggerContainer staggerDelay={0.15} delay={0.2} className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-stretch">
           {/* Left Column: Venue Info & Directions Card (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-md">
+          <StaggerItem variant="fadeRight" className="lg:col-span-5 flex flex-col justify-between bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-md">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8E2424]/10 text-[#8E2424] text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-wider mb-3 sm:mb-4 md:mb-5">
                 <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4" />
@@ -55,7 +56,7 @@ export const VenueMap: React.FC = () => {
               <p className="text-xs sm:text-sm md:text-base font-semibold text-[#171313] mb-0.5">
                 {eventConfig.venue.address}
               </p>
-              
+
               <p className="text-xs sm:text-sm md:text-base text-[#171313]/80 font-sans mb-3 sm:mb-4 md:mb-5">
                 {eventConfig.venue.postalCode} {eventConfig.venue.city}, {eventConfig.venue.country}
               </p>
@@ -92,10 +93,10 @@ export const VenueMap: React.FC = () => {
               <span>Get Directions</span>
               <Navigation className="w-4 h-4 md:w-5 md:h-5 text-[#D4AF62] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
-          </div>
+          </StaggerItem>
 
           {/* Right Column: Embedded Responsive Interactive Map (7 cols) */}
-          <div className="lg:col-span-7 bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-2 md:p-3 shadow-md flex flex-col overflow-hidden min-h-[300px] md:min-h-[400px] lg:min-h-[480px]">
+          <StaggerItem variant="fadeLeft" className="lg:col-span-7 bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-2 md:p-3 shadow-md flex flex-col overflow-hidden min-h-[300px] md:min-h-[400px] lg:min-h-[480px]">
             <div className="relative w-full h-full min-h-[290px] md:min-h-[390px] lg:min-h-[460px] rounded-xl md:rounded-2xl overflow-hidden bg-[#F7F0E4]">
               <iframe
                 title="Biswabangla Nordic Durga Puja Venue Map"
@@ -107,15 +108,15 @@ export const VenueMap: React.FC = () => {
                 allowFullScreen
                 referrerPolicy="no-referrer"
               />
-              
+
               {/* Floating map chip */}
               <div className="absolute top-2.5 left-2.5 md:top-4 md:left-4 bg-[#FFF9EF]/95 backdrop-blur-md border border-[#D4AF62]/50 px-3 md:px-4 py-1 md:py-1.5 rounded-full shadow-sm flex items-center gap-1.5 text-xs md:text-sm font-semibold text-[#641A1A] pointer-events-none">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Pandal Location • Denmark</span>
               </div>
             </div>
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerContainer>
       </div>
     </ScrollSection>
   );

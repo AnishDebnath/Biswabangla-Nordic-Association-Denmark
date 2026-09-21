@@ -3,6 +3,7 @@ import { Mail, Phone, Instagram, Facebook, MessageSquare, Send, CheckCircle2 } f
 import { eventConfig } from '../data/eventConfig';
 import { AlponaDivider } from './DecorativeAlpona';
 import { ScrollSection } from './ScrollSection';
+import { SectionHeader, StaggerContainer, StaggerItem } from './AnimationUtils';
 
 export const ContactSection: React.FC = () => {
   const [inquirySent, setInquirySent] = useState(false);
@@ -27,7 +28,7 @@ export const ContactSection: React.FC = () => {
     >
       <div className="max-w-5xl xl:max-w-6xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
+        <SectionHeader delay={0.1} className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
           <div className="inline-flex items-center gap-1.5 md:gap-2 text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-[#8E2424] font-semibold mb-1 md:mb-2">
             <MessageSquare className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#B8863B]" />
             <span>We Are Here To Assist</span>
@@ -46,11 +47,11 @@ export const ContactSection: React.FC = () => {
           <p className="text-xs sm:text-sm md:text-base text-[#171313]/75 font-normal max-w-prose md:max-w-xl mx-auto px-2 text-center">
             Feel free to connect with the Biswabangla Nordic organizing committee regarding puja rituals, bhog contributions, or cultural participation.
           </p>
-        </div>
+        </SectionHeader>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-start">
+        <StaggerContainer staggerDelay={0.15} delay={0.2} className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-start">
           {/* Contact Details Card */}
-          <div className="bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-sm space-y-5 sm:space-y-6 md:space-y-8">
+          <StaggerItem variant="fadeRight" className="bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-sm space-y-5 sm:space-y-6 md:space-y-8">
             <div>
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#B8863B] block mb-1">
                 ORGANIZATION
@@ -119,10 +120,10 @@ export const ContactSection: React.FC = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </StaggerItem>
 
           {/* Quick Message / Inquiry Form */}
-          <div className="bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-sm">
+          <StaggerItem variant="fadeLeft" className="bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-sm">
             <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold text-[#641A1A] mb-1">
               Send Quick Note to Organizers
             </h3>
@@ -183,8 +184,8 @@ export const ContactSection: React.FC = () => {
                 </button>
               </form>
             )}
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerContainer>
       </div>
     </ScrollSection>
   );

@@ -3,6 +3,7 @@ import { Sparkles, Music, Theater, Drum, Users, UtensilsCrossed, Clock } from 'l
 import { eventConfig } from '../data/eventConfig';
 import { AlponaDivider } from './DecorativeAlpona';
 import { ScrollSection } from './ScrollSection';
+import { SectionHeader, AnimatedGrid, AnimatedCard } from './AnimationUtils';
 
 export const CulturalProgramme: React.FC = () => {
   const getCategoryIcon = (category: string) => {
@@ -31,7 +32,7 @@ export const CulturalProgramme: React.FC = () => {
     >
       <div className="max-w-6xl xl:max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
+        <SectionHeader delay={0.1} className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
           <div className="inline-flex items-center gap-1.5 md:gap-2 text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-[#8E2424] font-semibold mb-1 md:mb-2">
             <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#B8863B]" />
             <span>Community Festivities</span>
@@ -50,15 +51,12 @@ export const CulturalProgramme: React.FC = () => {
           <p className="text-xs sm:text-sm md:text-base text-[#171313]/75 font-normal max-w-prose md:max-w-xl mx-auto px-2 text-center">
             {eventConfig.cultural.subtitle}
           </p>
-        </div>
+        </SectionHeader>
 
         {/* 6 Event Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-6 lg:gap-8">
+        <AnimatedGrid staggerDelay={0.1} delay={0.2} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-6 lg:gap-8">
           {eventConfig.cultural.items.map((item, index) => (
-            <div
-              key={index}
-              className="bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-7 shadow-sm hover:shadow-md hover:border-[#B8863B] transition-all duration-300 flex flex-col justify-between group"
-            >
+            <AnimatedCard key={index} index={index} variant="fadeUp" className="bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-7 shadow-sm hover:shadow-md hover:border-[#B8863B] transition-all duration-300 flex flex-col justify-between group">
               <div>
                 {/* Header Tag and Icon */}
                 <div className="flex items-center justify-between mb-3 sm:mb-4 md:mb-5">
@@ -90,9 +88,9 @@ export const CulturalProgramme: React.FC = () => {
               <div className="mt-3 md:mt-4 pt-2.5 md:pt-3 border-t border-[#D4AF62]/20 text-xs md:text-sm text-[#B8863B] font-serif italic">
                 Open to all devotees & community guests
               </div>
-            </div>
+            </AnimatedCard>
           ))}
-        </div>
+        </AnimatedGrid>
       </div>
     </ScrollSection>
   );
