@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #171313;
+    background-color: #FFF9EF;
+    background-image:
+      radial-gradient(rgba(212, 175, 98, 0.12) 1px, transparent 1px),
+      radial-gradient(rgba(142, 36, 36, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px, 64px 64px;
+    background-position: 0 0, 16px 16px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-serif {
+    font-family: 'Cormorant Garamond', 'Cinzel', Georgia, serif;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes driftPattern {
+  0% {
+    background-position: 0px 0px;
+  }
+
+  100% {
+    background-position: 360px 360px;
+  }
+}
+
+@keyframes driftPatternReverse {
+  0% {
+    background-position: 360px 0px;
+  }
+
+  100% {
+    background-position: 0px 360px;
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinSlowReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes gentleBreathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes shimmerGold {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    filter: drop-shadow(0 0 2px rgba(212, 175, 98, 0.2));
+  }
+
+  50% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 6px rgba(212, 175, 98, 0.6));
+  }
+}
+
+@keyframes floatPetalSlow {
+  0% {
+    transform: translateY(0px) rotate(0deg) translateX(0px);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-25px) rotate(15deg) translateX(8px);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg) translateX(0px);
+    opacity: 0.3;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pattern-drift {
+  animation: driftPattern 45s linear infinite;
+  will-change: background-position;
+}
+
+.animate-pattern-drift-reverse {
+  animation: driftPatternReverse 50s linear infinite;
+  will-change: background-position;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 65s linear infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.animate-spin-slow-reverse {
+  animation: spinSlowReverse 75s linear infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.animate-breathe {
+  animation: gentleBreathe 7s ease-in-out infinite;
+}
+
+.animate-shimmer-gold {
+  animation: shimmerGold 4s ease-in-out infinite;
+}
+
+.animate-float-petal {
+  animation: floatPetalSlow 6s ease-in-out infinite;
+}
+
+/* Custom Festive Scrollbar for Dropdowns */
+.custom-dropdown-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #D4AF62 rgba(212, 175, 98, 0.15);
+}
+
+.custom-dropdown-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-dropdown-scrollbar::-webkit-scrollbar-track {
+  background: rgba(212, 175, 98, 0.12);
+  border-radius: 9999px;
+  margin: 4px 0;
+}
+
+.custom-dropdown-scrollbar::-webkit-scrollbar-thumb {
+  background: #D4AF62;
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+.custom-dropdown-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #8E2424;
+}
