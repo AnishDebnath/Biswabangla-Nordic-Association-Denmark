@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { AlponaMandala, AlponaDivider } from './DecorativeAlpona';
+import { AlponaDivider } from './DecorativeAlpona';
 import { Sparkles, ArrowRight, X } from 'lucide-react';
 import { festiveAudio } from '../utils/ambientSound';
 import patternBg from '../assets/images/festive_bengali_pattern_1789856534168.jpg';
+import logoImg from '../assets/images/logo.png';
 
 interface OpeningExperienceProps {
   onEnter: () => void;
@@ -80,10 +81,12 @@ export const OpeningExperience: React.FC<OpeningExperienceProps> = ({ onEnter, i
               transition={{ duration: 1.4, ease: "easeOut" }}
               className="relative"
             >
-              <AlponaMandala className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 text-[#B8863B]" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-lg sm:text-xl md:text-2xl text-[#8E2424] font-serif font-bold">ॐ</span>
-              </div>
+              <img
+                src={logoImg}
+                alt="Biswabangla Nordic Association logo"
+                className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 object-contain select-none"
+                draggable={false}
+              />
             </motion.div>
           </div>
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ChevronDown, Calendar, MapPin, Sparkles } from 'lucide-react';
+import { ChevronDown, Calendar, MapPin } from 'lucide-react';
 import { eventConfig } from '../data/eventConfig';
 import { AlponaDivider, ShiuliFlower, AlponaMandala } from './DecorativeAlpona';
-import heroImg from '../assets/images/durga_hero_art_1789855824959.jpg';
+import heroImg from '../assets/images/maa-durga.jpg';
 import patternBg from '../assets/images/festive_bengali_pattern_1789856534168.jpg';
+import logoImg from '../assets/images/logo.png';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -70,7 +71,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           className="mb-3 sm:mb-4 md:mb-6"
         >
           <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 md:px-5 py-1.5 md:py-2 rounded-full bg-[#171313]/80 border border-[#D4AF62]/50 backdrop-blur-md shadow-md">
-            <Sparkles className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#D4AF62] animate-pulse" />
+            <img
+              src={logoImg}
+              alt=""
+              aria-hidden="true"
+              className="w-3 h-3 md:w-3.5 md:h-3.5 object-contain animate-pulse select-none"
+              draggable={false}
+            />
             <span className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#D4AF62]">
               {eventConfig.hero.subtitle}
             </span>

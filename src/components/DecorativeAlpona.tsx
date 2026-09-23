@@ -1,4 +1,5 @@
 import React from 'react';
+import alponaDividerImg from '../assets/images/alpona-divider.png';
 
 interface AlponaProps {
   className?: string;
@@ -108,25 +109,17 @@ export const AlponaCorner: React.FC<AlponaProps> = ({
 };
 
 export const AlponaDivider: React.FC<{ className?: string; color?: string }> = ({
-  className = "",
-  color = "currentColor"
+  className = ""
 }) => {
   return (
-    <div className={`flex items-center justify-center space-x-3 w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto my-2.5 sm:my-3 md:my-5 text-[#D4AF62] ${className}`}>
-      <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF62]/60 to-transparent" />
-      <svg
-        viewBox="0 0 60 24"
-        fill="none"
-        className="w-14 h-6 text-[#D4AF62] shrink-0"
+    <div className={`flex items-center justify-center space-x-3 w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto my-2.5 sm:my-3 md:my-5 ${className}`}>
+      <img
+        src={alponaDividerImg}
+        alt=""
         aria-hidden="true"
-      >
-        <circle cx="30" cy="12" r="3.5" fill={color} />
-        <circle cx="16" cy="12" r="2" fill={color} opacity="0.7" />
-        <circle cx="44" cy="12" r="2" fill={color} opacity="0.7" />
-        <path d="M4 12 Q16 4 30 12 Q44 20 56 12" stroke={color} strokeWidth="1" fill="none" />
-        <path d="M4 12 Q16 20 30 12 Q44 4 56 12" stroke={color} strokeWidth="1" fill="none" />
-      </svg>
-      <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF62]/60 to-transparent" />
+        className="h-6 sm:h-7 md:h-8 w-auto max-w-full select-none"
+        draggable={false}
+      />
     </div>
   );
 };

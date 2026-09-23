@@ -84,7 +84,7 @@ export const Countdown: React.FC = () => {
             <span>The Countdown Begins</span>
           </div>
           <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-['Noto_Serif_Bengali'] font-bold text-[#641A1A]">
-            {timeLeft.isStarted ? 'পুজোর মহোৎসব শুরু হয়েছে' : 'পুজোর আর মাত্র...'}
+            {timeLeft.isStarted ? 'পুজোর মহোৎসব শুরু হয়েছে' : 'পুজোর আর মাত্র'}
           </h2>
         </div>
 
@@ -111,7 +111,7 @@ export const Countdown: React.FC = () => {
                 <div className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#8E2424] tracking-tight leading-none">
                   {String(unit.value).padStart(2, '0')}
                 </div>
-                
+
                 {/* Latin Label */}
                 <div className="text-[9px] sm:text-[11px] md:text-xs uppercase tracking-wider font-semibold text-[#171313]/70 mt-1 md:mt-2">
                   {unit.label}
