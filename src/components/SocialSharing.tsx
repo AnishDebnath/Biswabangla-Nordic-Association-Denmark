@@ -9,7 +9,7 @@ export const SocialSharing: React.FC = () => {
   const [copied, setCopied] = useState(false);
 
   const shareTitle = "Biswabangla Nordic Association — Durga Puja 2026";
-  const shareText = "Join us for the 5th Annual Durga Puja Celebration in Denmark (16–20 October 2026). Explore schedule, pushpanjali timings, and RSVP:";
+  const shareText = "Join us for the 5th Annual Durga Puja Celebration in Denmark (16–20 October 2026, Hirtshalsvej 1, 2720 Vanløse). Explore schedule, pushpanjali timings, and RSVP:";
   const shareUrl = typeof window !== 'undefined' ? window.location.href : eventConfig.meta.shareUrl;
 
   const handleCopyLink = () => {
@@ -48,11 +48,13 @@ export const SocialSharing: React.FC = () => {
             <span>Spread The Joy</span>
           </div>
 
+          {/* English Main Heading (Bigger) */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#FFF9EF] mb-1 md:mb-2">
             SHARE THE FESTIVAL
           </h2>
 
-          <p className="font-['Noto_Serif_Bengali'] text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#D4AF62] font-semibold mb-0.5 md:mb-1">
+          {/* Bengali Subheading (A bit smaller) */}
+          <p className="font-['Noto_Serif_Bengali'] text-base sm:text-lg md:text-xl lg:text-2xl text-[#D4AF62] font-semibold mb-0.5 md:mt-1">
             বন্ধুবান্ধব ও আত্মীয়স্বজনকে আমন্ত্রণ জানান
           </p>
 
@@ -134,4 +136,3 @@ export const SocialSharing: React.FC = () => {
     </ScrollSection>
   );
 };
-

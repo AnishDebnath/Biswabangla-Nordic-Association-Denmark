@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
         </div>
       </div>
 
-      {/* Hero Content Container - Mobile to Desktop Responsive */}
+      {/* Hero Content Container */}
       <div className="relative z-20 max-w-4xl xl:max-w-5xl mx-auto flex flex-col items-center justify-center w-full">
         {/* Association Badge */}
         <motion.div
@@ -78,13 +78,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
               className="w-3 h-3 md:w-3.5 md:h-3.5 object-contain animate-pulse select-none"
               draggable={false}
             />
-            <span className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#D4AF62]">
+            <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#D4AF62]">
               {eventConfig.hero.subtitle}
             </span>
           </div>
         </motion.div>
 
-        {/* Large Premium Main Heading */}
+        {/* Large Premium Main Heading (English - Prominent) */}
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
@@ -104,29 +104,29 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           — {eventConfig.hero.year} —
         </motion.div>
 
-        {/* Bengali Calligraphic Typography */}
+        {/* Bengali Calligraphic Typography (Bengali - Styled proportionally slightly smaller than English main title) */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="my-3 sm:my-4 md:my-6"
+          className="my-2 sm:my-3 md:my-5"
         >
-          <span className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-['Noto_Serif_Bengali'] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FFF9EF] via-[#D4AF62] to-[#FFF9EF] drop-shadow-md py-2 sm:py-3 leading-[1.1]">
+          <span className="block text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-['Noto_Serif_Bengali'] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FFF9EF] via-[#D4AF62] to-[#FFF9EF] drop-shadow-md py-1.5 leading-[1.1]">
             {eventConfig.hero.bengaliGreeting}
           </span>
-          <p className="text-xs sm:text-sm md:text-base font-['Hind_Siliguri'] text-[#D4AF62]/90 mt-1 md:mt-2 tracking-wider">
-            বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন • ডেনমার্ক
+          <p className="text-xs sm:text-sm md:text-base font-['Hind_Siliguri'] text-[#D4AF62]/90 mt-1 md:mt-1.5 tracking-wider">
+            বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন • ডেনমার্ক (৫ম বর্ষ)
           </p>
         </motion.div>
 
         <AlponaDivider className="my-2.5 sm:my-4 md:my-6 max-w-xs sm:max-w-sm md:max-w-md text-[#D4AF62]/70 mx-auto w-full" />
 
-        {/* Invitation Line */}
+        {/* Invitation Line (English - prominent and clear) */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.45 }}
-          className="max-w-prose md:max-w-2xl lg:max-w-3xl text-sm md:text-base lg:text-lg xl:text-xl text-[#FFF9EF]/85 font-sans leading-relaxed md:leading-relaxed mb-6 sm:mb-8 md:mb-10 px-2 font-light"
+          className="max-w-prose md:max-w-2xl lg:max-w-3xl text-sm md:text-base lg:text-lg xl:text-xl text-[#FFF9EF]/90 font-sans leading-relaxed md:leading-relaxed mb-6 sm:mb-8 md:mb-10 px-2 font-normal"
         >
           {eventConfig.hero.invitationLine}
         </motion.p>
@@ -144,7 +144,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           </div>
           <div className="w-fit inline-flex items-center justify-center gap-1.5 md:gap-2 bg-[#641A1A]/60 border border-[#D4AF62]/40 px-3.5 sm:px-4 md:px-5 py-1.5 md:py-2 rounded-full backdrop-blur-sm shadow-sm whitespace-nowrap">
             <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#D4AF62] shrink-0" />
-            <span className="text-xs md:text-sm font-medium">Copenhagen, Denmark</span>
+            <span className="text-xs md:text-sm font-medium">{eventConfig.venue.address}</span>
           </div>
         </motion.div>
 
@@ -168,4 +168,3 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
     </section>
   );
 };
-

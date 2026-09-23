@@ -79,11 +79,12 @@ export const Countdown: React.FC = () => {
 
         {/* Section Header */}
         <div className="text-center mb-5 md:mb-8 relative z-10">
-          <div className="inline-flex items-center gap-1.5 md:gap-2 text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.22em] text-[#8E2424] font-bold mb-1 md:mb-2">
+          <div className="inline-flex items-center gap-1.5 md:gap-2 text-md sm:text-3xl uppercase text-[#8E2424] font-bold mb-1 md:mb-2">
             <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#B8863B]" />
             <span>The Countdown Begins</span>
+            <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#B8863B]" />
           </div>
-          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-['Noto_Serif_Bengali'] font-bold text-[#641A1A]">
+          <h2 className="text-md md:text-2xl lg:text-3xl font-['Noto_Serif_Bengali'] font-bold text-[#641A1A]">
             {timeLeft.isStarted ? 'পুজোর মহোৎসব শুরু হয়েছে' : 'পুজোর আর মাত্র'}
           </h2>
         </div>

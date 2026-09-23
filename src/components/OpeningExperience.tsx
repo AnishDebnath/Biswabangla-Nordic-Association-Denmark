@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AlponaDivider } from './DecorativeAlpona';
-import { Sparkles, ArrowRight, X } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import { festiveAudio } from '../utils/ambientSound';
 import patternBg from '../assets/images/festive_bengali_pattern_1789856534168.jpg';
 import logoImg from '../assets/images/logo.png';
+import { eventConfig } from '../data/eventConfig';
 
 interface OpeningExperienceProps {
   onEnter: () => void;
@@ -12,8 +13,6 @@ interface OpeningExperienceProps {
 }
 
 export const OpeningExperience: React.FC<OpeningExperienceProps> = ({ onEnter, isOpen }) => {
-  const [hasStartedAudio, setHasStartedAudio] = useState(false);
-
   const handleEnterWithSound = (withSound: boolean) => {
     if (withSound) {
       festiveAudio.play();
@@ -99,7 +98,8 @@ export const OpeningExperience: React.FC<OpeningExperienceProps> = ({ onEnter, i
               Biswabangla Nordic Association • Denmark
             </p>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#641A1A] font-medium tracking-tight mb-1 sm:mb-2">
+            {/* English Main Title (Bigger) */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#641A1A] font-bold tracking-tight mb-1">
               5th Annual Durga Puja
             </h1>
 
@@ -109,11 +109,12 @@ export const OpeningExperience: React.FC<OpeningExperienceProps> = ({ onEnter, i
 
             <AlponaDivider className="my-3 sm:my-4 max-w-xs" />
 
-            <div className="my-4 sm:my-6">
-              <span className="inline-block text-3xl sm:text-4xl md:text-5xl font-['Noto_Serif_Bengali'] font-bold text-[#8E2424] drop-shadow-sm tracking-wide py-1.5 leading-[1.1]">
+            {/* Bengali Calligraphy & Subline (A bit smaller) */}
+            <div className="my-3 sm:my-5">
+              <span className="inline-block text-2xl sm:text-3xl md:text-4xl font-['Noto_Serif_Bengali'] font-bold text-[#8E2424] drop-shadow-sm tracking-wide py-1 leading-[1.1]">
                 শুভ শারদীয়া
               </span>
-              <p className="text-xs md:text-sm font-['Noto_Serif_Bengali'] text-[#641A1A]/80 mt-1.5 sm:mt-2 font-medium">
+              <p className="text-xs sm:text-sm font-['Noto_Serif_Bengali'] text-[#641A1A]/80 mt-1 font-medium">
                 আনন্দের এই শারদোৎসবে আপনি ও আপনার পরিবার সাদরে আমন্ত্রিত
               </p>
             </div>
@@ -122,7 +123,7 @@ export const OpeningExperience: React.FC<OpeningExperienceProps> = ({ onEnter, i
               A celebration of faith, culture, rhythm, and togetherness in Scandinavia.
             </p>
 
-            {/* Action buttons */}
+            {/* Action button */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 id="enter-invitation-btn"
@@ -135,7 +136,7 @@ export const OpeningExperience: React.FC<OpeningExperienceProps> = ({ onEnter, i
             </div>
 
             <p className="text-[10px] sm:text-[11px] text-[#171313]/50 mt-3 sm:mt-4 tracking-wider">
-              16 – 20 October 2026 • Denmark
+              16 – 20 October 2026 • {eventConfig.venue.address}
             </p>
           </motion.div>
         </motion.div>

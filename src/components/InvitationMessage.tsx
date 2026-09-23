@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { eventConfig } from '../data/eventConfig';
-import { AlponaCorner, AlponaDivider, ShiuliFlower } from './DecorativeAlpona';
-import { Heart, Sparkles } from 'lucide-react';
+import { AlponaCorner, AlponaDivider } from './DecorativeAlpona';
+import { Heart, Sparkles, MapPin, Calendar } from 'lucide-react';
 import { ScrollSection } from './ScrollSection';
 import { Countdown } from './Countdown';
 import patternBg from '../assets/images/festive_bengali_pattern_1789856534168.jpg';
@@ -55,34 +55,69 @@ export const InvitationMessage: React.FC = () => {
               <Heart className="w-4 h-4 md:w-5 md:h-5 text-[#8E2424]" />
             </div>
 
-            <p className="text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.25em] font-semibold text-[#8E2424] mb-1.5 md:mb-2">
+            {/* English Main Section Heading (A bit bigger) */}
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#641A1A] mb-1.5 sm:mb-2 tracking-tight leading-tight">
               {eventConfig.invitation.headingEn}
-            </p>
-
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-['Noto_Serif_Bengali'] font-bold text-[#641A1A] mb-2 sm:mb-3 md:mb-4 tracking-wide leading-tight">
-              {eventConfig.invitation.headingBn}
             </h2>
+
+            {/* Bengali Subheading (A bit smaller than English) */}
+            <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-['Noto_Serif_Bengali'] font-bold text-[#8E2424] mb-2 sm:mb-3 md:mb-4 tracking-wide leading-tight">
+              {eventConfig.invitation.headingBn}
+            </p>
 
             <AlponaDivider className="my-3 sm:my-4 md:my-6 max-w-xs md:max-w-sm text-[#D4AF62] mx-auto w-full" />
 
-            <p className="font-serif text-base sm:text-lg md:text-xl lg:text-2xl text-[#641A1A] font-medium leading-relaxed mb-4 sm:mb-6 md:mb-8 text-center">
-              {eventConfig.invitation.welcomeText}
+            {/* English Welcome Banner (Bigger) */}
+            <p className="font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#641A1A] font-semibold leading-relaxed mb-2 sm:mb-3 text-center">
+              {eventConfig.invitation.welcomeTextEn}
             </p>
 
-            {/* Paragraphs - Formatted for easy mobile reading */}
-            <div className="space-y-3.5 md:space-y-5 text-sm md:text-base lg:text-lg text-[#171313]/85 leading-relaxed font-sans text-left sm:text-center max-w-prose md:max-w-2xl lg:max-w-3xl mx-auto font-light">
-              {eventConfig.invitation.paragraphs.map((para, i) => (
-                <p key={i} className="leading-relaxed">{para}</p>
+            {/* Bengali Welcome Subtext (A bit smaller) */}
+            <p className="font-['Noto_Serif_Bengali'] text-sm sm:text-base md:text-lg lg:text-xl text-[#8E2424] font-medium leading-relaxed mb-6 sm:mb-8 text-center">
+              {eventConfig.invitation.welcomeTextBn}
+            </p>
+
+            {/* English Invitation Paragraphs (Primary, a bit bigger text) */}
+            <div className="space-y-4 md:space-y-5 text-base sm:text-lg md:text-xl text-[#171313]/90 leading-relaxed font-sans text-left sm:text-center max-w-prose md:max-w-2xl lg:max-w-3xl mx-auto font-normal">
+              {eventConfig.invitation.paragraphsEn.map((para, i) => (
+                <p key={`en-${i}`} className="leading-relaxed">{para}</p>
               ))}
             </div>
 
+            {/* Bengali Invitation Letter Box (Slightly smaller text size) */}
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 md:p-8 rounded-2xl bg-[#F7F0E4]/80 border border-[#D4AF62]/50 text-left sm:text-center w-full shadow-xs">
+              <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#8E2424] mb-2.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#B8863B]" />
+                <span>বাংলা নিমন্ত্রণপত্র</span>
+              </div>
+              <div className="space-y-3 font-['Noto_Serif_Bengali'] text-xs sm:text-sm md:text-base text-[#171313]/85 leading-relaxed font-normal">
+                {eventConfig.invitation.paragraphsBn.map((para, i) => (
+                  <p key={`bn-${i}`} className="leading-relaxed">{para}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* Venue & Date Callout */}
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm md:text-base font-semibold text-[#641A1A]">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#8E2424]/10 border border-[#8E2424]/20">
+                <Calendar className="w-4 h-4 text-[#8E2424]" />
+                <span>16 – 20 October 2026</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#8E2424]/10 border border-[#8E2424]/20">
+                <MapPin className="w-4 h-4 text-[#8E2424]" />
+                <span>{eventConfig.venue.address}, Denmark</span>
+              </div>
+            </div>
+
             {/* Core Theme Motto */}
-            <div className="mt-6 sm:mt-8 md:mt-10 pt-5 md:pt-6 border-t border-[#D4AF62]/40">
-              <p className="font-serif text-sm sm:text-base md:text-lg lg:text-xl italic font-semibold text-[#8E2424] tracking-wide">
-                “{eventConfig.invitation.themeMotto}”
+            <div className="mt-6 sm:mt-8 md:mt-10 pt-5 md:pt-6 border-t border-[#D4AF62]/40 w-full">
+              {/* English Motto (Bigger) */}
+              <p className="font-serif text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-widest font-bold text-[#8E2424]">
+                “{eventConfig.invitation.themeMottoEn}”
               </p>
-              <p className="text-xs md:text-sm font-['Hind_Siliguri'] text-[#B8863B] font-semibold mt-1 md:mt-2">
-                একসাথে পুজো • একসাথে প্রার্থনা • একসাথে আনন্দ
+              {/* Bengali Motto (A bit smaller) */}
+              <p className="text-xs sm:text-sm md:text-base font-['Noto_Serif_Bengali'] text-[#B8863B] font-semibold mt-1 md:mt-2">
+                {eventConfig.invitation.themeMottoBn}
               </p>
             </div>
           </div>
@@ -91,4 +126,3 @@ export const InvitationMessage: React.FC = () => {
     </ScrollSection>
   );
 };
-

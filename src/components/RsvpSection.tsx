@@ -5,6 +5,7 @@ import { AlponaDivider } from './DecorativeAlpona';
 import { ScrollSection } from './ScrollSection';
 import { CustomDropdown } from './CustomDropdown';
 import { SectionHeader, StaggerContainer, StaggerItem } from './AnimationUtils';
+import { eventConfig } from '../data/eventConfig';
 
 interface RsvpData {
   fullName: string;
@@ -76,6 +77,23 @@ export const RsvpSection: React.FC = () => {
       setSubmittedData(finalRecord);
       setIsSubmitted(true);
       setIsSubmitting(false);
+
+      const dayLabels = finalRecord.days.map((k) => availableDays.find((d) => d.key === k)?.label ?? k).join(', ');
+      const submittedDate = new Date(finalRecord.submittedAt ?? Date.now());
+      const dateStr = submittedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+      const timeStr = submittedDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+      const lines = [
+        'Durga Puja 2026 RSVP',
+        '',
+        `Name: ${finalRecord.fullName}`,
+        `Phone: ${finalRecord.phone}`,
+        `Adults: ${finalRecord.adults}`,
+        `Children: ${finalRecord.children}`,
+        `Days: ${dayLabels}`,
+        finalRecord.message ? `Message: ${finalRecord.message}` : '',
+        `Submitted: ${dateStr}, ${timeStr}`,
+      ].filter(Boolean);
+      window.open(`${eventConfig.contact.whatsappUrl}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
     }, 500);
   };
 
@@ -96,9 +114,9 @@ export const RsvpSection: React.FC = () => {
       'BEGIN:VEVENT',
       'SUMMARY:Biswabangla Nordic Durga Puja 2026',
       'DESCRIPTION:5th Annual Durga Puja Celebration in Denmark. Pushpanjali, Bhog, Cultural Events.',
-      'LOCATION:Biswabangla Nordic Pandal, Kulturvej 10, Frederiksberg, Copenhagen, Denmark',
-      'DTSTART:20261016T070000Z',
-      'DTEND:20261020T200000Z',
+      `LOCATION:${eventConfig.venue.address}, ${eventConfig.venue.city}, Denmark`,
+      'DTSTART:20261016T140000Z',
+      'DTEND:20261020T170000Z',
       'STATUS:CONFIRMED',
       'END:VEVENT',
       'END:VCALENDAR',
@@ -116,10 +134,10 @@ export const RsvpSection: React.FC = () => {
   };
 
   const availableDays = [
-    { key: 'shashthi', label: 'Shashthi', bnLabel: 'ষষ্ঠী', date: '16 Oct' },
+    { key: 'sasthi', label: 'Sasthi', bnLabel: 'ষষ্ঠী', date: '16 Oct' },
     { key: 'saptami', label: 'Saptami', bnLabel: 'সপ্তমী', date: '17 Oct' },
     { key: 'ashtami', label: 'Ashtami', bnLabel: 'অষ্টমী', date: '18 Oct', isHighlight: true },
-    { key: 'nabami', label: 'Nabami', bnLabel: 'নবমী', date: '19 Oct' },
+    { key: 'navami', label: 'Navami', bnLabel: 'নবমী', date: '19 Oct' },
     { key: 'dashami', label: 'Dashami', bnLabel: 'দশমী', date: '20 Oct' },
   ];
 
@@ -138,18 +156,20 @@ export const RsvpSection: React.FC = () => {
             <span>Join Our Celebration</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-['Noto_Serif_Bengali'] font-bold text-[#641A1A] leading-tight">
-            আপনাদের উপস্থিতিই উৎসবের আনন্দ
+          {/* English Main Heading (Bigger) */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#641A1A] leading-tight">
+            CONFIRM YOUR CELEBRATION RSVP
           </h2>
 
-          <p className="font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#171313] font-bold mt-1 md:mt-2">
-            CONFIRM YOUR CELEBRATION RSVP
+          {/* Bengali Subheading (A bit smaller) */}
+          <p className="font-['Noto_Serif_Bengali'] text-base sm:text-lg md:text-xl lg:text-2xl text-[#8E2424] font-semibold mt-1 md:mt-2">
+            আপনাদের উপস্থিতিই উৎসবের পরম আনন্দ
           </p>
 
           <AlponaDivider className="my-2.5 sm:my-3 md:my-5 max-w-xs md:max-w-sm text-[#D4AF62] mx-auto w-full" />
 
           <p className="text-xs sm:text-sm md:text-base text-[#171313]/75 font-normal max-w-prose md:max-w-xl mx-auto px-2 text-center">
-            Please kindly confirm your attendance to help our hospitality and Bhog planning team welcome you seamlessly.
+            Please kindly confirm your attendance to help our hospitality, Bhog, and seating planning team welcome you seamlessly.
           </p>
         </SectionHeader>
 
@@ -182,7 +202,7 @@ export const RsvpSection: React.FC = () => {
                 </p>
 
                 <p className="text-xs sm:text-sm md:text-base text-[#171313]/80 max-w-md md:max-w-lg mx-auto mb-6 sm:mb-8 font-light px-2">
-                  We look forward to celebrating Durga Puja with you and your family in Denmark.
+                  We look forward to celebrating Durga Puja 2026 with you and your family in Denmark.
                 </p>
 
                 {/* Digital Pass Summary Ticket */}
@@ -207,37 +227,41 @@ export const RsvpSection: React.FC = () => {
                     </div>
                     <div className="col-span-2 sm:col-span-1">
                       <span className="text-[#171313]/60 block text-[9px] sm:text-[10px] md:text-xs uppercase font-bold">Contact</span>
-                      <span className="text-xs md:text-sm text-[#171313]/90 truncate block">{submittedData.email}</span>
+                      <span className="text-xs md:text-sm text-[#171313]/90 truncate block">{submittedData.phone}</span>
                     </div>
                     <div className="col-span-2 sm:col-span-1">
                       <span className="text-[#171313]/60 block text-[9px] sm:text-[10px] md:text-xs uppercase font-bold">Attending Days</span>
-                      <span className="text-xs md:text-sm text-[#8E2424] font-semibold uppercase">{submittedData.days.join(', ')}</span>
+                      <span className="text-xs md:text-sm text-[#8E2424] font-semibold uppercase">
+                        {submittedData.days.map((k) => availableDays.find((d) => d.key === k)?.label ?? k).join(', ')}
+                      </span>
+                    </div>
+                    <div className="col-span-2">
+                      <span className="text-[#171313]/60 block text-[9px] sm:text-[10px] md:text-xs uppercase font-bold">Submitted</span>
+                      <span className="text-xs md:text-sm text-[#171313]/90">
+                        {(() => {
+                          const d = new Date(submittedData.submittedAt ?? Date.now());
+                          return `${d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}, ${d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`;
+                        })()}
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Post-RSVP Action Buttons */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 max-w-md md:max-w-lg mx-auto">
-                  <button
-                    onClick={handleDownloadCalendar}
-                    className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-3.5 rounded-full bg-[#8E2424] hover:bg-[#641A1A] text-[#FFF9EF] text-xs md:text-sm font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 border border-[#D4AF62]/40 shadow-sm cursor-pointer active:scale-95"
-                  >
-                    <Download className="w-4 h-4 text-[#D4AF62]" />
-                    <span>Add to Calendar (.ics)</span>
-                  </button>
+                {/* Post-RSVP Action Button */}
+                <div className="flex items-center justify-center max-w-md md:max-w-lg mx-auto">
                   <button
                     onClick={handleEditRsvp}
                     className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-3.5 rounded-full bg-[#FFF9EF] hover:bg-[#F7F0E4] text-[#641A1A] text-xs md:text-sm font-bold uppercase tracking-wider transition-all border border-[#D4AF62]/50 flex items-center justify-center gap-2 cursor-pointer active:scale-95"
                   >
                     <RefreshCw className="w-3.5 h-3.5" />
-                    <span>Update RSVP</span>
+                    <span>Update Details</span>
                   </button>
                 </div>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 md:space-y-8">
-                {/* Name, Email & Phone in responsive grid */}
-                <StaggerItem variant="fadeUp" className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 md:gap-6">
+                {/* Name & Phone in responsive grid */}
+                <StaggerItem variant="fadeUp" className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 md:gap-6">
                   {/* Full Name */}
                   <div>
                     <label className="block text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider text-[#171313] mb-1 md:mb-1.5 flex items-center gap-1.5">
@@ -255,7 +279,7 @@ export const RsvpSection: React.FC = () => {
                   </div>
 
                   {/* Email */}
-                  <div>
+                  {/* <div>
                     <label className="block text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider text-[#171313] mb-1 md:mb-1.5 flex items-center gap-1.5">
                       <Mail className="w-3.5 h-3.5 text-[#8E2424]" />
                       <span>Email Address *</span>
@@ -268,7 +292,7 @@ export const RsvpSection: React.FC = () => {
                       placeholder="name@example.com"
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 md:py-3.5 rounded-xl md:rounded-2xl bg-[#FFF9EF] border border-[#D4AF62]/50 text-sm md:text-base text-[#171313] focus:outline-none focus:ring-2 focus:ring-[#8E2424] focus:border-transparent transition-all placeholder:text-[#171313]/40"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Phone */}
                   <div>
@@ -287,8 +311,8 @@ export const RsvpSection: React.FC = () => {
                   </div>
                 </StaggerItem>
 
-                {/* Party Size & Dietary Preferences */}
-                <StaggerItem variant="fadeUp" className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 md:gap-6">
+                {/* Party Size */}
+                <StaggerItem variant="fadeUp" className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 md:gap-6">
                   {/* Number of Adults */}
                   <CustomDropdown
                     id="rsvp-adults-dropdown"
@@ -316,7 +340,7 @@ export const RsvpSection: React.FC = () => {
                   />
 
                   {/* Dietary Preference */}
-                  <CustomDropdown
+                  {/* <CustomDropdown
                     id="rsvp-dietary-dropdown"
                     label="Bhog Preference"
                     icon={<Utensils className="w-3.5 h-3.5 text-[#8E2424]" />}
@@ -328,7 +352,7 @@ export const RsvpSection: React.FC = () => {
                       { value: 'gluten_free', label: 'Gluten-Free', sublabel: 'Wheat & Gluten Free' },
                       { value: 'jain', label: 'No Onion / No Garlic', sublabel: 'Sattvic Bhog' },
                     ]}
-                  />
+                  /> */}
                 </StaggerItem>
 
                 {/* Which Days Will You Attend? */}
@@ -352,21 +376,30 @@ export const RsvpSection: React.FC = () => {
                           type="button"
                           key={day.key}
                           onClick={() => handleDayToggle(day.key)}
-                          className={`p-3 sm:p-3.5 md:p-4 rounded-xl sm:rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${isLastItem ? 'col-span-2 sm:col-span-1' : 'col-span-1'
-                            } ${isChecked
+                          className={`p-3 sm:p-3.5 md:p-4 rounded-xl sm:rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                            isLastItem ? 'col-span-2 sm:col-span-1' : 'col-span-1'
+                          } ${
+                            isChecked
                               ? 'bg-[#8E2424] text-[#FFF9EF] border-[#D4AF62] shadow-sm'
                               : 'bg-[#FFF9EF] text-[#171313] border-[#D4AF62]/40 hover:border-[#B8863B]'
-                            }`}
+                          }`}
                         >
                           <div className="flex items-center justify-between">
                             <span className="text-xs sm:text-sm md:text-base font-bold font-serif">{day.label}</span>
-                            <div className={`w-4 h-4 rounded flex items-center justify-center ${isChecked ? 'bg-[#D4AF62] text-[#171313]' : 'border border-[#D4AF62]'
-                              }`}>
+                            <div
+                              className={`w-4 h-4 rounded flex items-center justify-center ${
+                                isChecked ? 'bg-[#D4AF62] text-[#171313]' : 'border border-[#D4AF62]'
+                              }`}
+                            >
                               {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                             </div>
                           </div>
                           <div className="mt-1 flex items-center justify-between text-[11px] sm:text-xs">
-                            <span className={`font-['Noto_Serif_Bengali'] font-semibold ${isChecked ? 'text-[#FFF9EF]/90' : 'text-[#8E2424]'}`}>
+                            <span
+                              className={`font-['Noto_Serif_Bengali'] font-semibold ${
+                                isChecked ? 'text-[#FFF9EF]/90' : 'text-[#8E2424]'
+                              }`}
+                            >
                               {day.bnLabel}
                             </span>
                             <span className={isChecked ? 'text-[#FFF9EF]/75' : 'text-[#171313]/60'}>
@@ -419,4 +452,3 @@ export const RsvpSection: React.FC = () => {
     </ScrollSection>
   );
 };
-

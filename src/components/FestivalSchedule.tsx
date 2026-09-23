@@ -32,21 +32,23 @@ export const FestivalSchedule: React.FC = () => {
       <SectionHeader delay={0.1} className="text-center flex flex-col items-center justify-center max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 w-full">
         <div className="inline-flex items-center gap-1.5 md:gap-2 text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-[#8E2424] font-semibold mb-1 md:mb-2">
           <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#B8863B]" />
-          <span>5-Day Comprehensive Timeline</span>
+          <span>Official 5-Day Ritual Timetable</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-['Noto_Serif_Bengali'] font-bold text-[#641A1A] tracking-wide">
-          পুজোর সময়সূচি
+        {/* English Main Title (Bigger) */}
+        <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#641A1A] font-bold tracking-tight">
+          DURGA PUJA 2026 SCHEDULE
         </h2>
 
-        <p className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#171313] font-bold mt-0.5 md:mt-1">
-          THE FESTIVAL SCHEDULE
+        {/* Bengali Subtitle (A bit smaller) */}
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-['Noto_Serif_Bengali'] font-bold text-[#8E2424] mt-1 md:mt-1.5">
+          বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন — পূজার সময়সূচি
         </p>
 
         <AlponaDivider className="my-2.5 sm:my-3 md:my-5 max-w-xs md:max-w-sm text-[#D4AF62] mx-auto w-full" />
 
-        <p className="text-xs sm:text-sm md:text-base text-[#171313]/70 font-normal px-2 max-w-prose md:max-w-2xl mx-auto text-center">
-          Daily ritual timings, Pushpanjali batches, community Bhog, and evening cultural celebrations.
+        <p className="text-xs sm:text-sm md:text-base text-[#171313]/75 font-normal px-2 max-w-prose md:max-w-2xl mx-auto text-center">
+          Exact timings for Puja start, Pushpanjali, Bhog / Lunch, Cultural Programmes, and Community Dinners from 16th to 20th October 2026.
         </p>
       </SectionHeader>
 
@@ -54,24 +56,28 @@ export const FestivalSchedule: React.FC = () => {
       <AnimatedGrid staggerDelay={0.08} delay={0.2} className="hidden md:grid grid-cols-5 gap-2 md:gap-2.5 lg:gap-4 xl:gap-5 mb-6 md:mb-8 lg:mb-10">
         {eventConfig.schedule.map((day, index) => {
           const isSelected = day.dayKey === selectedDayKey;
-          const isAshtami = day.dayKey === 'ashtami';
+          const isHighlightDay = day.dayKey === 'ashtami' || day.dayKey === 'navami';
 
           return (
             <AnimatedCard
               key={day.dayKey}
               index={index}
               variant="scale"
-              className={`relative text-left p-2.5 md:p-3 lg:p-4 xl:p-5 rounded-xl md:rounded-2xl lg:rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[135px] md:min-h-[150px] lg:min-h-[170px] ${isSelected
+              className={`relative text-left p-2.5 md:p-3 lg:p-4 xl:p-5 rounded-xl md:rounded-2xl lg:rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[135px] md:min-h-[150px] lg:min-h-[170px] ${
+                isSelected
                   ? 'bg-[#8E2424] text-[#FFF9EF] border-[#D4AF62] shadow-lg scale-[1.02] lg:scale-[1.03]'
-                  : isAshtami
-                    ? 'bg-[#F7F0E4] border-[#B8863B] text-[#641A1A] hover:bg-[#8E2424]/10'
-                    : 'bg-[#FFF9EF] border-[#D4AF62]/40 text-[#171313] hover:border-[#B8863B]'
-                }`}
+                  : isHighlightDay
+                  ? 'bg-[#F7F0E4] border-[#B8863B] text-[#641A1A] hover:bg-[#8E2424]/10'
+                  : 'bg-[#FFF9EF] border-[#D4AF62]/40 text-[#171313] hover:border-[#B8863B]'
+              }`}
               onClick={() => setSelectedDayKey(day.dayKey)}
             >
               {day.badge ? (
-                <span className={`text-[8px] md:text-[8px] lg:text-[9px] xl:text-[10px] font-bold uppercase tracking-wider px-1.5 md:px-2 py-0.5 rounded-full mb-1.5 inline-block max-w-full truncate whitespace-nowrap ${isSelected ? 'bg-[#D4AF62] text-[#171313]' : 'bg-[#8E2424] text-[#FFF9EF]'
-                  }`}>
+                <span
+                  className={`text-[8px] md:text-[8px] lg:text-[9px] xl:text-[10px] font-bold uppercase tracking-wider px-1.5 md:px-2 py-0.5 rounded-full mb-1.5 inline-block max-w-full truncate whitespace-nowrap ${
+                    isSelected ? 'bg-[#D4AF62] text-[#171313]' : 'bg-[#8E2424] text-[#FFF9EF]'
+                  }`}
+                >
                   {day.badge}
                 </span>
               ) : (
@@ -79,23 +85,34 @@ export const FestivalSchedule: React.FC = () => {
               )}
 
               <div>
-                <span className={`text-[9px] md:text-[10px] lg:text-xs font-bold uppercase tracking-widest block ${isSelected ? 'text-[#D4AF62]' : 'text-[#8E2424]'
-                  }`}>
+                <span
+                  className={`text-[9px] md:text-[10px] lg:text-xs font-bold uppercase tracking-widest block ${
+                    isSelected ? 'text-[#D4AF62]' : 'text-[#8E2424]'
+                  }`}
+                >
                   {day.dayNumber}
                 </span>
 
+                {/* English Day Name (Bigger) */}
                 <h3 className="font-serif text-xs md:text-sm lg:text-base xl:text-lg font-bold leading-snug mt-0.5">
-                  {day.dayName}
+                  {day.dayName.split(',')[1] || day.dayName}
                 </h3>
 
-                <p className={`text-[10px] md:text-xs lg:text-sm font-['Noto_Serif_Bengali'] mt-0.5 font-medium truncate ${isSelected ? 'text-[#FFF9EF]/90' : 'text-[#641A1A]'
-                  }`}>
-                  {day.bengaliName.split('—')[0]}
+                {/* Bengali Day Name (A bit smaller) */}
+                <p
+                  className={`text-[10px] md:text-xs lg:text-sm font-['Noto_Serif_Bengali'] mt-0.5 font-medium truncate ${
+                    isSelected ? 'text-[#FFF9EF]/90' : 'text-[#8E2424]'
+                  }`}
+                >
+                  {day.bengaliName.split('—')[1] || day.bengaliName}
                 </p>
               </div>
 
-              <div className={`text-[10px] md:text-[11px] lg:text-xs mt-2 pt-1.5 border-t font-sans whitespace-nowrap ${isSelected ? 'border-[#FFF9EF]/20 text-[#FFF9EF]/80' : 'border-[#D4AF62]/30 text-[#171313]/60'
-                }`}>
+              <div
+                className={`text-[10px] md:text-[11px] lg:text-xs mt-2 pt-1.5 border-t font-sans whitespace-nowrap ${
+                  isSelected ? 'border-[#FFF9EF]/20 text-[#FFF9EF]/80' : 'border-[#D4AF62]/30 text-[#171313]/60'
+                }`}
+              >
                 {day.dateStr}
               </div>
             </AnimatedCard>
@@ -112,10 +129,11 @@ export const FestivalSchedule: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
-            className={`rounded-3xl md:rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-12 border ${selectedDay.dayKey === 'ashtami'
-              ? 'bg-[#FFF9EF] border-2 border-[#D4AF62] shadow-xl'
-              : 'bg-[#FFF9EF]/95 border-[#D4AF62]/50 shadow-md'
-              }`}
+            className={`rounded-3xl md:rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-12 border ${
+              selectedDay.dayKey === 'ashtami' || selectedDay.dayKey === 'navami'
+                ? 'bg-[#FFF9EF] border-2 border-[#D4AF62] shadow-xl'
+                : 'bg-[#FFF9EF]/95 border-[#D4AF62]/50 shadow-md'
+            }`}
           >
             {/* Day Header Banner */}
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 md:pb-8 md:mb-8 border-b border-[#D4AF62]/40">
@@ -127,14 +145,18 @@ export const FestivalSchedule: React.FC = () => {
                   {selectedDay.badge && (
                     <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold uppercase px-2 py-0.5 rounded-full bg-[#8E2424] text-[#FFF9EF]">
                       <Star className="w-3 h-3 text-[#D4AF62]" />
-                      <span>Special Highlight</span>
+                      <span>{selectedDay.badge}</span>
                     </span>
                   )}
                 </div>
-                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#641A1A] mt-1 md:mt-2">
+
+                {/* English Main Day Header (Bigger) */}
+                <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#641A1A] mt-1 md:mt-2">
                   {selectedDay.dayName}
                 </h3>
-                <p className="font-['Noto_Serif_Bengali'] text-xl md:text-2xl text-[#8E2424] font-semibold mt-0.5 md:mt-1">
+
+                {/* Bengali Subheading (A bit smaller) */}
+                <p className="font-['Noto_Serif_Bengali'] text-lg md:text-2xl text-[#8E2424] font-semibold mt-0.5 md:mt-1">
                   {selectedDay.bengaliName}
                 </p>
               </div>
@@ -157,10 +179,11 @@ export const FestivalSchedule: React.FC = () => {
               {selectedDay.events.map((event, idx) => (
                 <div
                   key={idx}
-                  className={`p-4 md:p-5 lg:p-6 rounded-2xl md:rounded-3xl border transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${event.isHighlight
-                    ? 'bg-[#8E2424]/10 border-[#8E2424]/40 shadow-sm'
-                    : 'bg-[#FFF9EF] border-[#D4AF62]/30'
-                    }`}
+                  className={`p-4 md:p-5 lg:p-6 rounded-2xl md:rounded-3xl border transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+                    event.isHighlight
+                      ? 'bg-[#8E2424]/10 border-[#8E2424]/40 shadow-sm'
+                      : 'bg-[#FFF9EF] border-[#D4AF62]/30'
+                  }`}
                 >
                   <div className="flex items-start gap-4 md:gap-5">
                     {/* Time Tag */}
@@ -169,7 +192,7 @@ export const FestivalSchedule: React.FC = () => {
                       <span className="whitespace-nowrap">{event.time}</span>
                     </div>
 
-                    {/* Event Details */}
+                    {/* Event Details: English (Bigger) + Bengali (A bit smaller) */}
                     <div>
                       <div className="flex items-center gap-2">
                         <h4 className="font-serif text-base sm:text-lg md:text-xl font-bold text-[#171313]">
@@ -177,7 +200,7 @@ export const FestivalSchedule: React.FC = () => {
                         </h4>
                         {event.isHighlight && (
                           <span className="text-[10px] md:text-xs uppercase font-bold text-[#8E2424] px-2 py-0.5 bg-[#8E2424]/15 rounded">
-                            Highlight
+                            Special
                           </span>
                         )}
                       </div>
@@ -187,7 +210,7 @@ export const FestivalSchedule: React.FC = () => {
                         </p>
                       )}
                       {event.description && (
-                        <p className="text-xs md:text-sm text-[#171313]/70 mt-1 font-sans">
+                        <p className="text-xs md:text-sm text-[#171313]/75 mt-1 font-sans">
                           {event.description}
                         </p>
                       )}
@@ -204,15 +227,16 @@ export const FestivalSchedule: React.FC = () => {
       <div className="md:hidden space-y-3">
         {eventConfig.schedule.map((day) => {
           const isExpanded = !!expandedMobileDays[day.dayKey];
-          const isAshtami = day.dayKey === 'ashtami';
+          const isHighlight = day.dayKey === 'ashtami' || day.dayKey === 'navami';
 
           return (
             <div
               key={day.dayKey}
-              className={`rounded-2xl border overflow-hidden transition-all ${isAshtami
-                ? 'border-2 border-[#D4AF62] bg-[#FFF9EF] shadow-md'
-                : 'border-[#D4AF62]/50 bg-[#FFF9EF]/95'
-                }`}
+              className={`rounded-2xl border overflow-hidden transition-all ${
+                isHighlight
+                  ? 'border-2 border-[#D4AF62] bg-[#FFF9EF] shadow-md'
+                  : 'border-[#D4AF62]/50 bg-[#FFF9EF]/95'
+              }`}
             >
               {/* Accordion Toggle Header */}
               <button
@@ -230,9 +254,11 @@ export const FestivalSchedule: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[#641A1A] mt-0.5">
+                  {/* English Title (Bigger) */}
+                  <h3 className="font-serif text-base sm:text-lg font-bold text-[#641A1A] mt-0.5">
                     {day.dayName}
                   </h3>
+                  {/* Bengali Title (A bit smaller) */}
                   <p className="font-['Noto_Serif_Bengali'] text-xs font-semibold text-[#8E2424]">
                     {day.bengaliName}
                   </p>
@@ -277,10 +303,11 @@ export const FestivalSchedule: React.FC = () => {
                       {day.events.map((event, idx) => (
                         <div
                           key={idx}
-                          className={`p-2.5 rounded-xl border ${event.isHighlight
-                            ? 'bg-[#8E2424]/10 border-[#8E2424]/40'
-                            : 'bg-[#FFF9EF] border-[#D4AF62]/30'
-                            }`}
+                          className={`p-2.5 rounded-xl border ${
+                            event.isHighlight
+                              ? 'bg-[#8E2424]/10 border-[#8E2424]/40'
+                              : 'bg-[#FFF9EF] border-[#D4AF62]/30'
+                          }`}
                         >
                           <div className="flex items-center gap-2 mb-1.5 flex-wrap sm:flex-nowrap">
                             <span className="px-2 py-0.5 rounded bg-[#8E2424] text-[#FFF9EF] text-[10px] font-bold whitespace-nowrap shrink-0">
@@ -313,4 +340,3 @@ export const FestivalSchedule: React.FC = () => {
     </ScrollSection>
   );
 };
-

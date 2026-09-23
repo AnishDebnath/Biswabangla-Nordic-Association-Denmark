@@ -29,7 +29,9 @@ export interface EventConfig {
     name: string;
     bengaliName: string;
     tagline: string;
+    bengaliTagline: string;
     edition: string;
+    bengaliEdition: string;
     year: string;
     country: string;
   };
@@ -44,9 +46,12 @@ export interface EventConfig {
   invitation: {
     headingEn: string;
     headingBn: string;
-    welcomeText: string;
-    themeMotto: string;
-    paragraphs: string[];
+    welcomeTextEn: string;
+    welcomeTextBn: string;
+    themeMottoEn: string;
+    themeMottoBn: string;
+    paragraphsEn: string[];
+    paragraphsBn: string[];
   };
   pujaInfo: {
     dates: string;
@@ -75,12 +80,29 @@ export interface EventConfig {
     headingEn: string;
     headingBn: string;
     subtitle: string;
+    committeeSign: string;
     items: {
       time: string;
       title: string;
-      category: 'Dance' | 'Music' | 'Dhak' | 'Children' | 'Community' | 'Bhog';
+      bengaliTitle?: string;
+      category: 'Children' | 'Adults' | 'Drama' | 'Music' | 'Dhak' | 'Community';
       description: string;
+      subEvents?: string[];
+      registrationNote?: string;
     }[];
+  };
+  donation: {
+    headingEn: string;
+    headingBn: string;
+    appealTextEn: string;
+    appealTextBn: string;
+    familyContribution: string;
+    singleContribution: string;
+    mobilePay: string;
+    accountName: string;
+    bankName: string;
+    regNo: string;
+    accountNo: string;
   };
   venue: {
     name: string;
@@ -97,24 +119,35 @@ export interface EventConfig {
   contact: {
     organization: string;
     email: string;
-    phone: string;
+    phones: string[];
+    phoneList: {
+      number: string;
+      raw: string;
+      label: string;
+      telUrl: string;
+      whatsappUrl: string;
+    }[];
+    phoneDisplay: string;
+    whatsappNumber: string;
+    whatsappUrl: string;
     facebook: string;
     instagram: string;
-    whatsappCommunity: string;
   };
 }
 
 export const eventConfig: EventConfig = {
   meta: {
     title: "Durga Puja 2026 Denmark | Biswabangla Nordic Association",
-    description: "Join Biswabangla Nordic Association for the 5th Annual Durga Puja Celebration 2026 in Denmark. Explore the puja schedule, Anjali timings, cultural programmes, venue and RSVP.",
-    shareUrl: "https://biswabanglanordic.dk/durga-puja-2026",
+    description: "Join Biswabangla Nordic Association for the 5th Annual Durga Puja Celebration 2026 in Denmark. Explore the puja schedule, Anjali timings, cultural programmes, venue at Hirtshalsvej 1, Vanløse, and RSVP.",
+    shareUrl: "https://biswabanglanordic.dk",
   },
   organization: {
     name: "BISWABANGLA NORDIC ASSOCIATION",
     bengaliName: "বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন",
-    tagline: "Celebrating faith, culture, community & togetherness in the Nordics",
+    tagline: "UNITY • HERITAGE • CULTURE • COMPASSION",
+    bengaliTagline: "ঐক্য • ঐতিহ্য • সংস্কৃতি • সহানুভূতি",
     edition: "5th Annual Durga Puja Celebration",
+    bengaliEdition: "পঞ্চম বার্ষিক সর্বজনীন দুর্গোৎসব",
     year: "2026",
     country: "Denmark",
   },
@@ -123,213 +156,273 @@ export const eventConfig: EventConfig = {
     mainTitle: "5th Annual Durga Puja Celebration",
     year: "2026",
     bengaliGreeting: "শুভ শারদীয়া",
-    invitationLine: "With hearts full of devotion and joy, we invite you to celebrate the spirit of Durga Puja with our Bengali community in Denmark.",
-    targetCountdownDate: "2026-10-16T09:00:00+02:00",
+    invitationLine: "Carrying the sacred message of Sharodiya and the divine arrival of Goddess Durga, Biswabangla Nordic Association warmly invites you and your family to celebrate the Sarbojanin Shri Shri Durga Puja 2026 in Denmark.",
+    targetCountdownDate: "2026-10-16T16:00:00+02:00",
   },
   invitation: {
-    headingEn: "YOU ARE WARMLY INVITED",
-    headingBn: "সপরিবারে সাদর আমন্ত্রণ",
-    welcomeText: "Biswabangla Nordic Association warmly invites members, families, friends, and the wider Bengali and international community in Denmark to join our 5th Annual Durga Puja Celebration 2026.",
-    themeMotto: "Come together. Pray together. Celebrate together.",
-    paragraphs: [
-      "As autumn arrives with the whispering winds of Scandinavia and the nostalgic fragrance of Shiuli and white Kash flowers, our hearts yearn for the beats of the Dhak and the auspicious presence of Maa Durga.",
-      "Join us for five magical days filled with sacred rituals, divine Pushpanjali, soul-stirring cultural performances, authentic community Mahabhog, and joyous festivities that bridge our rich Bengali heritage with the warmth of Nordic togetherness.",
+    headingEn: "INVITATION TO DURGA PUJA 2026",
+    headingBn: "সর্বজনীন দুর্গোৎসব ২০২৬ — সাদর আমন্ত্রণ",
+    welcomeTextEn: "BiswaBangla Nordic Association takes immense joy and pride in inviting you all to our 5th Annual Durga Puja Celebration!",
+    welcomeTextBn: "মাননীয় মহাশয়/মহাশয়া, প্রতি বছরের ন্যায় এ বছরও বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন দুর্গাপূজা কমিটি ২০২৬-এর পরিচালনায় সর্বজনীন দুর্গোৎসবের আয়োজন করা হয়েছে।",
+    themeMottoEn: "UNITY • HERITAGE • CULTURE • COMPASSION",
+    themeMottoBn: "ঐক্য, সংস্কৃতি ও উৎসবের গৌরবময় ৫ বছর!",
+    paragraphsEn: [
+      "Carrying the sacred message of Sharodiya and the divine arrival of Goddess Durga, the Biswabangla Nordic Association Durga Puja Committee 2026 is delighted to organize the Sarbojanin Shri Shri Durga Puja from 16th to 20th October 2026 in an atmosphere filled with devotion, spirituality, and celebration.",
+      "On this auspicious occasion of seeking the eternal blessings of Maa Durga, the members of the Biswabangla Nordic Association Durga Puja Committee 2026 sincerely invite your gracious presence, participation, and kind support along with your family.",
+      "Marking half a decade of community, culture, and beautiful memories in the Nordic region, this year’s celebration promises to be grander and closer to our hearts. Come, let’s join hands, share laughter, enjoy the festive beats of Dhak, and welcome Ma Durga together.",
+      "May the divine blessings of Maa Durga fill every heart and home with peace, prosperity, happiness, and spiritual harmony.",
+    ],
+    paragraphsBn: [
+      "দূর প্রবাসের কর্মব্যস্ত জীবনের মাঝেও আমরা বুকের গভীরে বাঁচিয়ে রেখেছি আমাদের মাটির টান, আমাদের উৎসবের আনন্দ। দেখতে দেখতে আমাদের সবার প্রিয় ‘বিশ্ববাংলা নরডিক অ্যাসোসিয়েশন’ পদার্পণ করল তার সাফল্যের ৫ম বছরে।",
+      "উক্ত পুজোর দিনগুলিতে আপনার উপস্থিতি ও সহযোগিতা বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন এর ২০২৬ সর্বজনীন দুর্গাপূজা কমিটির সকল সদস্যবৃন্দের পক্ষ থেকে একান্তভাবে আমরা কামনা করি।",
+      "আসুন, আগামী ১৬ই থেকে ২০শে অক্টোবর—এই পাঁচটা দিন আমরা একসাথে মেতে উঠি ঢাকের আওয়াজে, শিউলির গন্ধে, আর ধুনুচি নাচের ছন্দে। নতুন পোশাকের আনন্দ আর চেনা মানুষের হাসিমুখ নিয়ে মেতে উঠি প্রাণের উৎসবে।",
+      "ধন্যবাদান্তে — বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন",
     ],
   },
   pujaInfo: {
     dates: "16–20 October 2026",
-    bengaliDates: "২৯ আশ্বিন – ৩ কার্তিক ১৪৩৩",
-    venueName: "Biswabangla Nordic Pandal & Cultural Hall",
-    city: "Copenhagen / Denmark",
+    bengaliDates: "১৬ই অক্টোবর – ২০শে অক্টোবর, ২০২৬",
+    venueName: "Biswabangla Nordic Puja Mandap",
+    city: "Vanløse, Copenhagen",
     country: "Denmark",
     organizedBy: "Biswabangla Nordic Association",
   },
   pushpanjali: {
-    headingEn: "PUSHPANJALI TIMINGS",
-    headingBn: "পুষ্পাঞ্জলি সময়সূচি",
-    tagline: "Sacred floral offerings to Maa Durga. Please arrive 15 minutes before scheduled rounds.",
+    headingEn: "PUSHPANJALI & RITUAL TIMINGS",
+    headingBn: "পুষ্পাঞ্জলি ও পূজার সময়সূচি",
+    tagline: "Sacred floral offerings to Maa Durga. Devotees are requested to arrive at the mandap before the scheduled times.",
     slots: [
       {
+        day: "Maha Sasthi",
+        bengaliDay: "মহাষষ্ঠী",
+        date: "Friday, 16 October 2026",
+        timings: ["Puja Start: 4:00 PM", "Pushpanjali: 6:00 PM", "Dinner: 8:30 PM"],
+        notes: "Welcoming Maa Durga with Bodhan, Adhibas & evening Pushpanjali",
+      },
+      {
         day: "Maha Saptami",
-        bengaliDay: "মহা সপ্তমী",
+        bengaliDay: "মহাসপ্তমী",
         date: "Saturday, 17 October 2026",
-        timings: ["Round 1: 10:30 AM", "Round 2: 11:30 AM"],
-        notes: "Nabapatrika Pravesh followed by sacred floral offering",
+        timings: ["Puja Start: 10:00 AM", "Pushpanjali: 12:00 PM", "Lunch: 1:30 PM", "Cultural: 5:00 PM – 8:00 PM", "Dinner: 8:30 PM"],
+        notes: "Nabapatrika Snan, Saptami floral prayers, drawing competition & Go As You Like",
       },
       {
         day: "Maha Ashtami",
-        bengaliDay: "মহা অষ্টমী",
+        bengaliDay: "মহাঅষ্টমী",
         date: "Sunday, 18 October 2026",
-        timings: ["Round 1: 10:00 AM", "Round 2: 11:00 AM", "Round 3: 12:00 PM"],
-        notes: "Most auspicious day. Grand Anjali batches & Sandhi Puja later in the evening.",
+        timings: ["Puja Start: 10:00 AM", "Pushpanjali: 12:00 PM", "Lunch: 1:30 PM", "Adult Cultural Program: 5:30 PM – 8:00 PM", "Dinner: 8:30 PM"],
+        notes: "Auspicious Maha Ashtami Pushpanjali and vibrant evening cultural performances (Note: Kumari Puja is not performed)",
         isSpecial: true,
       },
       {
-        day: "Maha Nabami",
-        bengaliDay: "মহা নবমী",
+        day: "Maha Navami",
+        bengaliDay: "মহানবমী",
         date: "Monday, 19 October 2026",
-        timings: ["Round 1: 11:00 AM", "Round 2: 12:00 PM"],
-        notes: "Pushpanjali followed by Homa (Yajna) & Mahabhog offering",
+        timings: [
+          "Sandhi Puja: 6:58 AM – 7:46 AM",
+          "Puja Start: 10:00 AM",
+          "Pushpanjali: 12:00 PM",
+          "Lunch: 1:30 PM",
+          "Kid's Cultural Program: 5:30 PM – 8:00 PM",
+          "Dinner: 8:30 PM",
+        ],
+        notes: "Early morning sacred Sandhi Puja, midday Pushpanjali, and Kid's Cultural Extravaganza with KidsDrama",
+        isSpecial: true,
+      },
+      {
+        day: "Maha Dashami",
+        bengaliDay: "মহাদশমী",
+        date: "Tuesday, 20 October 2026",
+        timings: ["Puja Start: 10:00 AM", "Pushpanjali: 12:00 PM", "Lunch: 1:30 PM", "Closing: 5:00 PM"],
+        notes: "Devi Boron, Sindoor Khela, Shantijal & auspicious Bijoya Dashami farewell",
       },
     ],
     guidelines: [
-      "Fresh flowers, bel leaves (bael patra), and sacred threads (chandan) will be provided at the mandap.",
-      "Traditional Bengali attire is warmly encouraged for morning Pushpanjali.",
-      "Devotees observing fast for Anjali are requested to join morning batches.",
+      "Fresh flowers, bel leaves (bael patra), and sacred chandan will be arranged at the puja hall.",
+      "Traditional festive attire is warmly encouraged for all morning and evening pushpanjali sessions.",
+      "Please note that Kumari Puja is not performed at our venue.",
+      "Devotees observing fast are kindly requested to be present by the scheduled morning/evening timings.",
     ],
   },
   schedule: [
     {
       dayNumber: "DAY 01",
-      dayKey: "shashthi",
-      dayName: "SHASHTHI",
-      bengaliName: "ষষ্ঠী — মহাষষ্ঠী",
+      dayKey: "sasthi",
+      dayName: "FRIDAY, OCTOBER 16",
+      bengaliName: "শুক্রবার, ১৬ই অক্টোবর — মহাষষ্ঠী",
       dateStr: "16 October 2026",
-      dateSubtitle: "Friday • Welcoming Maa Durga",
-      highlights: ["Bodhan & Amantran", "Adhibas", "Evening Arati", "Welcome Adda & Snacks"],
+      dateSubtitle: "Friday • Maha Sasthi",
+      highlights: ["Puja Start (4:00 PM)", "Pushpanjali (6:00 PM)", "Dinner (8:30 PM)"],
       events: [
-        { time: "05:00 PM", title: "Arrival of Devotees & Mandap Opening", bengaliTitle: "ভক্তবৃন্দের আগমন ও মণ্ডপ দ্বারোদ্ঘাটন", description: "Welcoming community members and guests with chandan and sweet greetings." },
-        { time: "06:00 PM", title: "Shashthi Bodhan, Amantran & Adhibas", bengaliTitle: "দেবী বোধন, আমন্ত্রণ ও অধিবাস", description: "Sacred awakening rituals of Maa Durga under the Bilva tree." },
-        { time: "07:30 PM", title: "Sandhya Arati & Dhak Recital", bengaliTitle: "সন্ধ্যা আরতি ও ঢাকের বাদ্য", description: "Traditional evening lamp offering accompanied by rhythmic beats of the Dhak." },
-        { time: "08:30 PM", title: "Welcome Cultural Adda & Light Dinner", bengaliTitle: "স্বাগতম সাংস্কৃতিক আড্ডা ও নৈশভোজ", description: "Community gathering with traditional Bengali festive snacks." },
+        { time: "04:00 PM", title: "Puja Start", bengaliTitle: "পূজার শুভারম্ভ ও বোধন", description: "Beginning of the 5th Annual Durga Puja rituals and welcome of Maa Durga." },
+        { time: "06:00 PM", title: "Pushpanjali", bengaliTitle: "মহাষষ্ঠী পুষ্পাঞ্জলি", description: "Sacred floral offering prayers to Maa Durga for peace and prosperity.", isHighlight: true },
+        { time: "08:30 PM", title: "Dinner", bengaliTitle: "নৈশভোজ ও প্রসাদ বিতরণ", description: "Community dinner and festive gathering with warm hospitality." },
       ],
     },
     {
       dayNumber: "DAY 02",
       dayKey: "saptami",
-      dayName: "SAPTAMI",
-      bengaliName: "সপ্তমী — মহাসপ্তমী",
+      dayName: "SATURDAY, OCTOBER 17",
+      bengaliName: "শনিবার, ১৭ই অক্টোবর — মহাসপ্তমী",
       dateStr: "17 October 2026",
-      dateSubtitle: "Saturday • Sacred Nabapatrika & Joy",
-      highlights: ["Nabapatrika Snan", "Saptami Pushpanjali", "Community Bhog", "Grand Cultural Evening"],
+      dateSubtitle: "Saturday • Maha Saptami",
+      highlights: ["Puja Start (10:00 AM)", "Pushpanjali (12:00 PM)", "Lunch (1:30 PM)", "Cultural (5:00 PM – 8:00 PM)", "Dinner (8:30 PM)"],
       events: [
-        { time: "09:30 AM", title: "Nabapatrika Pravesh & Saptami Puja", bengaliTitle: "নবপত্রিকা প্রবেশ ও মহাসপ্তমী পূজা", description: "Holy bathing of Kolabou (Nabapatrika) and consecration in the pandal." },
-        { time: "11:00 AM", title: "Saptami Pushpanjali (Batches 1 & 2)", bengaliTitle: "মহাসপ্তমী পুষ্পাঞ্জলি", description: "Devotional floral prayer offering to Maa Durga and her children." },
-        { time: "01:00 PM", title: "Traditional Community Mahabhog", bengaliTitle: "মহাপ্রসাদ ও কমিউনিটি মহাতৃপ্তির ভোগ", description: "Sacred Khichuri bhog, Labra, Chutney, and Payesh served with love." },
-        { time: "06:30 PM", title: "Sandhya Arati & Dhunuchi Naach", bengaliTitle: "সন্ধ্যা আরতি ও ধুনুচি নাচ", description: "Vibrant traditional incense dance accompanied by resonating Dhak rhythm." },
-        { time: "07:30 PM", title: "Nordic-Bengali Cultural Extravaganza", bengaliTitle: "সাংস্কৃতিক অনুষ্ঠান — সঙ্গীত ও নৃত্য", description: "Live Rabindra Sangeet, classical dances, and folk music by community artists." },
+        { time: "10:00 AM", title: "Puja Start", bengaliTitle: "মহাসপ্তমী পূজা আরম্ভ ও নবপত্রিকা প্রবেশ", description: "Morning rituals, Nabapatrika consecration, and invocation prayers." },
+        { time: "12:00 PM", title: "Pushpanjali", bengaliTitle: "মহাসপ্তমী পুষ্পাঞ্জলি", description: "Grand Pushpanjali offering by devotees and community members.", isHighlight: true },
+        { time: "01:30 PM", title: "Lunch", bengaliTitle: "মহাপ্রসাদ ও মধ্যাহ্নভোজ", description: "Traditional authentic Bengali lunch and bhog distribution." },
+        { time: "05:00 PM – 08:00 PM", title: "Cultural Programme (Drawing Competition & Go As You Like)", bengaliTitle: "সাংস্কৃতিক অনুষ্ঠান (চিত্রাঙ্কন ও যেমন খুশি তেমন সাজো)", description: "Drawing Competition (5:00 PM) & Go As You Like (Jemon Khushi Temon Sajo at 7:00 PM) based on Durga Puja themes.", isHighlight: true },
+        { time: "08:30 PM", title: "Dinner", bengaliTitle: "নৈশভোজ", description: "Community dinner and festive adda." },
       ],
     },
     {
       dayNumber: "DAY 03",
       dayKey: "ashtami",
-      dayName: "ASHTAMI",
-      bengaliName: "অষ্টমী — মহাষ্টমী ও সন্ধিপূজা",
+      dayName: "SUNDAY, OCTOBER 18",
+      bengaliName: "রবিবার, ১৮ই অক্টোবর — মহাঅষ্টমী",
       dateStr: "18 October 2026",
-      dateSubtitle: "Sunday • Peak Devotion & 108 Diyas",
+      dateSubtitle: "Sunday • Maha Ashtami",
       badge: "HIGHLIGHT",
       themeColor: "from-amber-700/30 to-red-950/40",
-      highlights: ["Maha Ashtami Puja", "Grand Pushpanjali", "Kumari Puja", "Auspicious Sandhi Puja"],
+      highlights: ["Puja Start (10:00 AM)", "Pushpanjali (12:00 PM)", "Lunch (1:30 PM)", "Adult Cultural Program (5:30 PM – 8:00 PM)", "Dinner (8:30 PM)"],
       events: [
-        { time: "09:30 AM", title: "Maha Ashtami Puja & Chandi Path", bengaliTitle: "মহাষ্টমী পূজা ও চণ্ডীপাঠ", description: "Solemn recitation of sacred hymns invoking the divine supreme goddess." },
-        { time: "10:30 AM", title: "Grand Maha Ashtami Pushpanjali", bengaliTitle: "মহাষ্টমী পুষ্পাঞ্জলি (সকলের জন্য)", description: "The most sacred Pushpanjali of the year across three dedicated batches.", isHighlight: true },
-        { time: "12:00 PM", title: "Kumari Puja (Symbolic Worship of Divine Girl Child)", bengaliTitle: "কুমারী পূজা", description: "Worship of the young girl as the embodiment of Goddess Durga." },
-        { time: "01:30 PM", title: "Ashtami Mahabhog Distribution", bengaliTitle: "অষ্টমীর মহাতৃপ্তির ভোগ বিতরণ", description: "Festive bhog prasad, luchi, cholar dal, begun bhaja, and mishti." },
-        { time: "06:45 PM", title: "Sandhya Arati & Dhunuchi Challenge", bengaliTitle: "সন্ধ্যা আরতি ও ধুনুচি নৃত্য প্রতিযোগিতা", description: "Enthusiastic participation across all age groups to honor Maa Durga." },
-        { time: "08:15 PM", title: "Sacred Sandhi Puja (108 Lotus & 108 Lamps)", bengaliTitle: "সন্ধিপূজা (১০৮ পদ্ম ও ১০৮ প্রদীপ প্রজ্বলন)", description: "The climactic transition between Ashtami & Nabami when Maa Chamunda vanquished Chanda and Munda.", isHighlight: true },
-        { time: "09:45 PM", title: "Grand Drama & Musical Night", bengaliTitle: "মহানাটক ও শারদ সঙ্গীত সন্ধ্যা", description: "Signature theatrical production by Biswabangla Nordic performers." },
+        { time: "10:00 AM", title: "Puja Start", bengaliTitle: "মহাঅষ্টমী পূজা আরম্ভ", description: "Solemn Maha Ashtami prayers and Chandi path." },
+        { time: "12:00 PM", title: "Pushpanjali", bengaliTitle: "মহাঅষ্টমী পুষ্পাঞ্জলি", description: "The most sacred and revered Pushpanjali of the festival.", isHighlight: true },
+        { time: "01:30 PM", title: "Lunch", bengaliTitle: "অষ্টমীর মহাতৃপ্তির ভোগ ও মধ্যাহ্নভোজ", description: "Delicious traditional Ashtami bhog and festive meal." },
+        { time: "05:30 PM – 08:00 PM", title: "Adult Cultural Program", bengaliTitle: "বড়দের সাংস্কৃতিক অনুষ্ঠান", description: "Performances by adult artists: Song, Dance, Instrument, Recitation, and other cultural presentations.", isHighlight: true },
+        { time: "08:30 PM", title: "Dinner", bengaliTitle: "নৈশভোজ", description: "Festive dinner and evening gathering." },
       ],
     },
     {
       dayNumber: "DAY 04",
-      dayKey: "nabami",
-      dayName: "NABAMI",
-      bengaliName: "নবমী — মহানবমী",
+      dayKey: "navami",
+      dayName: "MONDAY, OCTOBER 19",
+      bengaliName: "সোমবার, ১৯শে অক্টোবর — মহানবমী ও সন্ধিপূজা",
       dateStr: "19 October 2026",
-      dateSubtitle: "Monday • Sacred Homa & Celebration",
-      highlights: ["Mahanabami Puja", "Nabami Pushpanjali", "Maha Yajna / Homa", "Youth & Kids Gala"],
+      dateSubtitle: "Monday • Maha Navami",
+      badge: "SANDHI PUJA",
+      highlights: ["Sandhi Puja (6:58 AM – 7:46 AM)", "Puja Start (10:00 AM)", "Pushpanjali (12:00 PM)", "Kid's Cultural Program (5:30 PM – 8:00 PM)"],
       events: [
-        { time: "10:00 AM", title: "Mahanabami Puja & Archana", bengaliTitle: "মহানবমী পূজা ও অর্চনা", description: "Morning prayers and adoration of the Mother Goddess." },
-        { time: "11:30 AM", title: "Mahanabami Pushpanjali", bengaliTitle: "মহানবমী পুষ্পাঞ্জলি", description: "Floral prayer offerings and blessing recitation." },
-        { time: "12:30 PM", title: "Maha Yajna & Homa", bengaliTitle: "হোম ও মহাযজ্ঞ", description: "Sacred fire oblation praying for global peace, health, and harmony in the Nordics." },
-        { time: "01:30 PM", title: "Nabami Community Feast", bengaliTitle: "নবমী ভোজ প্রসাদ", description: "Grand festive banquet with traditional delicacies and sweets." },
-        { time: "06:30 PM", title: "Sandhya Arati & Festive Beats", bengaliTitle: "সন্ধ্যা আরতি ও ধামাকা ঢাক বাদন", description: "Evening arati with traditional lighting and rhythmic joy." },
-        { time: "07:30 PM", title: "Youth & Children's Talent Extravaganza", bengaliTitle: "শিশু-কিশোর শারদ উৎসব ও সঙ্গীত", description: "Showcasing the vibrant talents of our Nordic Bengali younger generation." },
+        { time: "06:58 AM – 07:46 AM", title: "Sandhi Puja", bengaliTitle: "পবিত্র সন্ধিপূজা", description: "The auspicious junction between Ashtami and Navami with 108 diyas and sacred chanting.", isHighlight: true },
+        { time: "10:00 AM", title: "Puja Start", bengaliTitle: "মহানবমী পূজা আরম্ভ", description: "Maha Navami morning adoration, archana, and prayers." },
+        { time: "12:00 PM", title: "Pushpanjali", bengaliTitle: "মহানবমী পুষ্পাঞ্জলি", description: "Navami floral offering to the divine mother.", isHighlight: true },
+        { time: "01:30 PM", title: "Lunch", bengaliTitle: "নবমী মধ্যাহ্নভোজ ও প্রসাদ", description: "Community lunch feast." },
+        { time: "05:30 PM – 08:00 PM", title: "Kid's Cultural Program & KidsDrama", bengaliTitle: "ছোটদের সাংস্কৃতিক অনুষ্ঠান ও কিডস ড্রামা", description: "Performances by our little stars: Song, Dance, Instrument, and special attraction KidsDrama!", isHighlight: true },
+        { time: "08:30 PM", title: "Dinner", bengaliTitle: "নৈশভোজ", description: "Community banquet and joyful gathering." },
       ],
     },
     {
       dayNumber: "DAY 05",
       dayKey: "dashami",
-      dayName: "BIJOYA DASHAMI",
-      bengaliName: "দশমী — বিজয়া দশমী ও সিঁদুর খেলা",
+      dayName: "TUESDAY, OCTOBER 20",
+      bengaliName: "মঙ্গলবার, ২০শে অক্টোবর — বিজয়া দশমী",
       dateStr: "20 October 2026",
-      dateSubtitle: "Tuesday • Sindoor Khela & Bijoya Greetings",
-      highlights: ["Darpan Bisarjan", "Sindoor Khela", "Dhunuchi Farewell", "Shantijal & Bijoya Pronam"],
+      dateSubtitle: "Tuesday • Maha Dashami",
+      highlights: ["Puja Start (10:00 AM)", "Pushpanjali (12:00 PM)", "Lunch (1:30 PM)", "Closing (5:00 PM)"],
       events: [
-        { time: "10:00 AM", title: "Dashami Puja & Darpan Bisarjan", bengaliTitle: "দশমী বিহিত পূজা ও দর্পণ বিসর্জন", description: "Symbolic mirror immersion concluding the five-day ritual worship." },
-        { time: "11:30 AM", title: "Devi Boron & Sindoor Khela", bengaliTitle: "দেবী বরণ ও সিঁদুর খেলা", description: "Traditional sweet feeding and vermilion blessing ceremony for married women and community joy.", isHighlight: true },
-        { time: "01:30 PM", title: "Bijoya Special Sweet Treats & Bhog", bengaliTitle: "বিজয়ার মিষ্টিমুখ ও প্রসাদ", description: "Homemade Rossogolla, Sandesh, Kucho Nimki, and Ghugni." },
-        { time: "05:00 PM", title: "Farewell Dhak & Dhunuchi Dance", bengaliTitle: "বিদায় বন্দনা ও শেষ ঢাকের বোল", description: "Bidding an emotional farewell to Maa Durga with 'Ashche bochor abar hobe'." },
-        { time: "06:30 PM", title: "Shantijal & Subho Bijoya Exchange", bengaliTitle: "শান্তিজল গ্রহণ ও শুভ বিজয়া কোলাকুলি", description: "Sprinkling of holy peace water, touching elders' feet, warm hugs, and sweets." },
+        { time: "10:00 AM", title: "Puja Start", bengaliTitle: "বিজয়া দশমী বিহিত পূজা", description: "Morning rituals concluding the 5-day worship." },
+        { time: "12:00 PM", title: "Pushpanjali", bengaliTitle: "দশমী পুষ্পাঞ্জলি", description: "Final floral offering of Durga Puja 2026." },
+        { time: "01:30 PM", title: "Lunch & Devi Boron", bengaliTitle: "মধ্যাহ্নভোজ, সিঁদুর খেলা ও মিষ্টিমুখ", description: "Festive lunch followed by Devi Boron, Sindoor Khela, and mishtimukh." },
+        { time: "05:00 PM", title: "Closing & Subho Bijoya", bengaliTitle: "পূজা সমাপন, শান্তিজল ও শুভ বিজয়া", description: "Emotional farewell with 'Aschhe bochhor abar hobe', Shantijal, and Bijoya greetings.", isHighlight: true },
       ],
     },
   ],
   cultural: {
-    headingEn: "BEYOND PUJA • CULTURE & COMMUNITY",
-    headingBn: "সংস্কৃতি, সুর ও মিলনোৎসব",
-    subtitle: "Experience the vibrant cultural soul of Bengal right here in Denmark.",
+    headingEn: "BNA CULTURAL EVENTS 2026",
+    headingBn: "সাংস্কৃতিক অনুষ্ঠান ও আনন্দানুষ্ঠান",
+    subtitle: "Three days of cultural programs filled with music, dance, creativity, talent, and entertainment organized by the BNA Cultural Committee.",
+    committeeSign: "Rakhi Nandi Das — On behalf of the BNA Cultural Committee",
     items: [
       {
-        time: "17 Oct • 07:30 PM",
-        title: "Classical & Contemporary Bengali Melodies",
-        category: "Music",
-        description: "Enchanting performances featuring Rabindra Sangeet, Nazrul Geeti, and modern Bengali classics by resident artists.",
-      },
-      {
-        time: "18 Oct • 06:45 PM",
-        title: "Dhunuchi Dance & Dhak Grand Showcase",
-        category: "Dhak",
-        description: "The captivating sound of traditional brass cymbals (Kashor) and master Dhak players echoing festive devotion.",
-      },
-      {
-        time: "18 Oct • 09:45 PM",
-        title: "Annual Community Theatrical Drama",
-        category: "Dance",
-        description: "A specially produced Bengali drama highlighting heritage, humor, and diasporic warmth in the Nordics.",
-      },
-      {
-        time: "19 Oct • 07:30 PM",
-        title: "Children's & Youth Talent Showcase",
+        time: "17th October (Saptomi Pujo) • 5:00 PM – 8:00 PM",
+        title: "Children's Small Event: Drawing Competition & Go As You Like",
+        bengaliTitle: "১৭ই অক্টোবর (সপ্তমী পুজো) — চিত্রাঙ্কন ও যেমন খুশি তেমন সাজো",
         category: "Children",
-        description: "Dance dramas, poetry recitations, and storytelling by the young generation born and growing up in Denmark.",
+        description: "Children can participate alone or with their mothers if they feel uncomfortable or shy. Theme: Durga Puja related characters, such as Maa Durga, Maa Lakshmi, Maa Saraswati, Lord Kartik, Lord Ganesha and more.",
+        subEvents: [
+          "Drawing Competition — 5:00 PM",
+          "Go As You Like (Jemon Khushi Temon Sajo) — 7:00 PM",
+        ],
+        registrationNote: "Open for children with parent encouragement",
       },
       {
-        time: "Daily • 01:00 PM",
-        title: "Authentic Bengali Mahabhog & Food Stalls",
-        category: "Bhog",
-        description: "Pure traditional feast served with genuine love, alongside afternoon snacks, tea, and Bengali mishti.",
+        time: "18th October (Astomi Pujo) • 5:30 PM – 8:00 PM",
+        title: "Adult Cultural Program",
+        bengaliTitle: "১৮ই অক্টোবর (অষ্টমী পুজো) — বড়দের সাংস্কৃতিক অনুষ্ঠান",
+        category: "Adults",
+        description: "We welcome adult artists and community members to showcase their artistic talents across diverse classical and contemporary genres.",
+        subEvents: [
+          "Song & Vocals",
+          "Dance Performances",
+          "Instrumental Music",
+          "Poetry Recitation",
+          "Other Cultural Performances",
+        ],
+        registrationNote: "Participation open for adult artists",
       },
       {
-        time: "Daily • All Day",
-        title: "Alpona & Heritage Exhibition",
-        category: "Community",
-        description: "Intricate floor art patterns, traditional handicraft stalls, and photo booth in authentic Bengali festive attires.",
+        time: "19th October (Nabomi Pujo) • 5:30 PM – 8:00 PM",
+        title: "Kid's Cultural Program & Special Attraction: KidsDrama!",
+        bengaliTitle: "১৯শে অক্টোবর (নবমী পুজো) — ছোটদের সাংস্কৃতিক অনুষ্ঠান ও নাটক",
+        category: "Drama",
+        description: "Our little stars take center stage to entertain us with their wonderful creativity, music, dance, and a signature stage production.",
+        subEvents: [
+          "Kids' Singing & Vocals",
+          "Kids' Dance Presentations",
+          "Instrumental Talent",
+          "Special Attraction: KidsDrama! (Registration CLOSED)",
+          "Other Youth Performances",
+        ],
+        registrationNote: "KidsDrama registration closed; other categories welcome",
       },
     ],
   },
+  donation: {
+    headingEn: "APPEAL FOR GENEROUS DONATIONS",
+    headingBn: "শারদোৎসব ২০২৬ — আন্তরিক আর্থিক অনুদানের আবেদন",
+    appealTextEn: "As the rhythmic beats of the dhaak approach, we prepare to welcome Maa Durga to our home away from home. The grand celebration of Durga Puja 2026 is made possible through your collective warmth, spirit, and generous contributions. We kindly request all members and families to step forward and support this year’s Durgotsav. This festival belongs to all of us — any contribution given from the heart brings us closer to a memorable celebration of Durga Puja 2026.",
+    appealTextBn: "প্রিয় সদস্য ও ভক্তবৃন্দ, দূর প্রবাসে মায়ের আবাহন আমাদের সকলের যৌথ প্রচেষ্টা ও আন্তরিক সহযোগিতার ফলেই সার্থক হয়ে ওঠে। দুর্গাপূজা ২০২৬ সুন্দর ও সফলভাবে সম্পন্ন করতে আপনাদের সকলের মুক্তহস্তে অনুদান একান্তভাবে কাম্য।",
+    familyContribution: "DKK 1,500",
+    singleContribution: "DKK 1,000",
+    mobilePay: "534682",
+    accountName: "BISWABANGLA NORDIC ASSOCIATION",
+    bankName: "Biswabangla Nordic Association",
+    regNo: "9570",
+    accountNo: "13503486",
+  },
   venue: {
-    name: "Biswabangla Nordic Pandal & Cultural Hall",
-    address: "Kulturvej 10, 2000 Frederiksberg",
-    city: "Copenhagen",
-    postalCode: "2000",
+    name: "Biswabangla Nordic Puja Venue",
+    address: "Hirtshalsvej 1, 2720 Vanløse",
+    city: "Vanløse, Copenhagen",
+    postalCode: "2720",
     country: "Denmark",
-    landmark: "Close to Metro & Public Transport, ample designated parking available",
+    landmark: "Hirtshalsvej 1, 2720 Vanløse — Easy access from Copenhagen metro/train & bus routes",
     transportTips: [
-      "Metro: 5 minutes walk from closest station",
-      "Bus lines: Direct access via routes 2A, 7A & 9A",
-      "Free venue parking available on weekends for attendees",
-      "Full wheelchair and stroller accessibility throughout the premises",
+      "Public Transport: Convenient access via S-train / Metro to Vanløse station followed by local bus/walk",
+      "By Car: Designated parking available around the venue area",
+      "Accessibility: Full wheelchair and family stroller accessible venue hall",
     ],
-    mapsQuery: "Frederiksberg, Copenhagen, Denmark",
-    lat: 55.6761,
-    lng: 12.5683,
+    mapsQuery: "Hirtshalsvej 1, 2720 Vanløse, Denmark",
+    lat: 55.6885,
+    lng: 12.4842,
   },
   contact: {
     organization: "Biswabangla Nordic Association",
     email: "contact@biswabanglanordic.dk",
-    phone: "+45 50 12 34 56",
-    facebook: "https://facebook.com/biswabanglanordic",
-    instagram: "https://instagram.com/biswabanglanordic",
-    whatsappCommunity: "https://chat.whatsapp.com/sample-durga-puja-denmark",
+    phones: ["+45 60 63 70 78"],
+    phoneList: [
+      {
+        number: "+45 60 63 70 78",
+        raw: "60637078",
+        label: "Contact Number 1",
+        telUrl: "tel:+4560637078",
+        whatsappUrl: "https://wa.me/4560637078",
+      },
+    ],
+    phoneDisplay: "60 63 70 78",
+    whatsappNumber: "+45 60 63 70 78",
+    whatsappUrl: "https://wa.me/4560637078",
+    facebook: "https://www.facebook.com/share/g/19f4BQrB2P/?mibextid=wwXIfr",
+    instagram: "https://www.facebook.com/share/g/19f4BQrB2P/?mibextid=wwXIfr",
   },
 };

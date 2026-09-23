@@ -7,7 +7,7 @@ import { SectionHeader, StaggerContainer, StaggerItem } from './AnimationUtils';
 
 export const VenueMap: React.FC = () => {
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-    `${eventConfig.venue.name}, ${eventConfig.venue.address}, ${eventConfig.venue.city}, ${eventConfig.venue.country}`
+    `${eventConfig.venue.address}, ${eventConfig.venue.city}, ${eventConfig.venue.country}`
   )}`;
 
   return (
@@ -25,18 +25,20 @@ export const VenueMap: React.FC = () => {
             <span>Venue & Location</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-['Noto_Serif_Bengali'] font-bold text-[#641A1A]">
-            আমাদের পূজামণ্ডপ
+          {/* English Main Title (Bigger) */}
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#641A1A] font-bold tracking-tight">
+            JOIN US AT THE PUJA
           </h2>
 
-          <p className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#171313] font-bold mt-0.5 md:mt-1">
-            JOIN US AT THE PUJA
+          {/* Bengali Subheading (A bit smaller) */}
+          <p className="font-['Noto_Serif_Bengali'] text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#8E2424] font-semibold mt-1">
+            আমাদের পূজামণ্ডপ • ভ্যানলোসে
           </p>
 
           <AlponaDivider className="my-2.5 sm:my-3 md:my-5 max-w-xs md:max-w-sm text-[#D4AF62] mx-auto w-full" />
 
           <p className="text-xs sm:text-sm md:text-base text-[#171313]/75 font-normal max-w-prose md:max-w-xl mx-auto px-2 text-center">
-            Conveniently situated in greater Copenhagen with seamless metro, bus, and vehicle accessibility.
+            Conveniently situated at Hirtshalsvej 1, 2720 Vanløse in greater Copenhagen with seamless metro, bus, and vehicle accessibility.
           </p>
         </SectionHeader>
 
@@ -49,11 +51,12 @@ export const VenueMap: React.FC = () => {
                 <span>Pandal Address</span>
               </div>
 
+              {/* Venue Name & Address: English (Bigger) */}
               <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-[#641A1A] mb-1.5 leading-tight">
                 {eventConfig.venue.name}
               </h3>
 
-              <p className="text-xs sm:text-sm md:text-base font-semibold text-[#171313] mb-0.5">
+              <p className="text-base sm:text-lg md:text-xl font-bold text-[#171313] mb-0.5">
                 {eventConfig.venue.address}
               </p>
 
@@ -101,7 +104,7 @@ export const VenueMap: React.FC = () => {
               <iframe
                 title="Biswabangla Nordic Durga Puja Venue Map"
                 src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                  `${eventConfig.venue.address}, ${eventConfig.venue.city}, Denmark`
+                  `Hirtshalsvej 1, 2720 Vanløse, Denmark`
                 )}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
                 className="w-full h-full min-h-[290px] md:min-h-[390px] lg:min-h-[460px] border-0"
                 loading="lazy"
@@ -112,7 +115,7 @@ export const VenueMap: React.FC = () => {
               {/* Floating map chip */}
               <div className="absolute top-2.5 left-2.5 md:top-4 md:left-4 bg-[#FFF9EF]/95 backdrop-blur-md border border-[#D4AF62]/50 px-3 md:px-4 py-1 md:py-1.5 rounded-full shadow-sm flex items-center gap-1.5 text-xs md:text-sm font-semibold text-[#641A1A] pointer-events-none">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Pandal Location • Denmark</span>
+                <span>Hirtshalsvej 1, 2720 Vanløse • Denmark</span>
               </div>
             </div>
           </StaggerItem>
@@ -121,4 +124,3 @@ export const VenueMap: React.FC = () => {
     </ScrollSection>
   );
 };
-

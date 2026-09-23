@@ -67,7 +67,7 @@ export default function App() {
         <FestivalSchedule />
 
         {/* Dedicated Pushpanjali Anjali Highlight & Mantras */}
-        <PushpanjaliSection />
+        {/* <PushpanjaliSection /> */}
 
         {/* Cultural Performances, Dhak & Bhog Programme */}
         <CulturalProgramme />
