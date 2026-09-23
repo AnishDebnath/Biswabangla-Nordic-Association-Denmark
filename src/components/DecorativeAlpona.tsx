@@ -1,5 +1,6 @@
 import React from 'react';
 import alponaDividerImg from '../assets/images/alpona-divider.png';
+import alponaImg from '../assets/images/alpona.png';
 
 interface AlponaProps {
   className?: string;
@@ -8,71 +9,16 @@ interface AlponaProps {
 }
 
 export const AlponaMandala: React.FC<AlponaProps> = ({
-  className = "w-48 h-48 text-[#D4AF62]/40",
-  color = "currentColor"
+  className = "w-48 h-48 text-[#D4AF62]/40"
 }) => {
   return (
-    <svg
-      viewBox="0 0 200 200"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
+    <img
+      src={alponaImg}
+      alt=""
       aria-hidden="true"
-    >
-      <circle cx="100" cy="100" r="95" stroke={color} strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
-      <circle cx="100" cy="100" r="88" stroke={color} strokeWidth="1.5" />
-      <circle cx="100" cy="100" r="82" stroke={color} strokeWidth="0.75" />
-      
-      {/* 8 Outer Lotus Petals */}
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
-        <g key={i} transform={`rotate(${angle} 100 100)`}>
-          <path
-            d="M100 12 C90 35 75 55 100 78 C125 55 110 35 100 12 Z"
-            fill="none"
-            stroke={color}
-            strokeWidth="1.5"
-          />
-          <path
-            d="M100 24 C95 40 85 52 100 68 C115 52 105 40 100 24 Z"
-            fill="none"
-            stroke={color}
-            strokeWidth="0.8"
-            opacity="0.7"
-          />
-          <circle cx="100" cy="45" r="2.5" fill={color} opacity="0.9" />
-          <circle cx="100" cy="88" r="1.5" fill={color} />
-        </g>
-      ))}
-
-      {/* Inner Petal Ring */}
-      {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map((angle, i) => (
-        <g key={`inner-${i}`} transform={`rotate(${angle} 100 100)`}>
-          <path
-            d="M100 38 C94 52 88 64 100 76 C112 64 106 52 100 38 Z"
-            fill="none"
-            stroke={color}
-            strokeWidth="1"
-          />
-          <circle cx="100" cy="20" r="2" fill={color} />
-        </g>
-      ))}
-
-      {/* Central Sacred Core */}
-      <circle cx="100" cy="100" r="24" stroke={color} strokeWidth="1.5" />
-      <circle cx="100" cy="100" r="18" stroke={color} strokeWidth="1" strokeDasharray="2 2" />
-      <circle cx="100" cy="100" r="8" fill={color} opacity="0.85" />
-      
-      {/* 8 Inner Seed Points */}
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
-        <circle
-          key={`dot-${i}`}
-          cx={100 + 13 * Math.cos((angle * Math.PI) / 180)}
-          cy={100 + 13 * Math.sin((angle * Math.PI) / 180)}
-          r="1.5"
-          fill={color}
-        />
-      ))}
-    </svg>
+      className={`object-contain select-none brightness-[0.72] saturate-[1.2] drop-shadow-[0_1px_2px_rgba(100,26,26,0.35)] ${className}`}
+      draggable={false}
+    />
   );
 };
 

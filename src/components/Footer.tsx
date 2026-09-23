@@ -4,6 +4,7 @@ import { ArrowUp, Instagram, Facebook, Mail, Heart, Sparkles } from 'lucide-reac
 import { eventConfig } from '../data/eventConfig';
 import { AlponaMandala, AlponaDivider } from './DecorativeAlpona';
 import patternBg from '../assets/images/festive_bengali_pattern_1789856534168.jpg';
+import { Watermark } from './Watermark';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -174,6 +175,9 @@ export const Footer: React.FC = () => {
             মা দুর্গার আশীর্বাদে সবার জীবন আলো ও আনন্দে ভরে উঠুক।
           </p>
         </motion.div>
+
+        {/* Bottom Watermark */}
+        <Watermark />
       </motion.div>
     </footer>
   );
