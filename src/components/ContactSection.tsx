@@ -56,7 +56,7 @@ export const ContactSection: React.FC = () => {
 
           {/* English Main Heading (Bigger) */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#641A1A]">
-            SUPPORT & CONTACT US
+            Generous Contributions
           </h2>
 
           {/* Bengali Subheading (A bit smaller) */}
@@ -110,7 +110,7 @@ export const ContactSection: React.FC = () => {
               {/* MobilePay */}
               <div className="flex items-center justify-between gap-3 bg-[#4285F4]/5 p-2.5 rounded-xl border border-[#4285F4]/25">
                 <div>
-                  <span className="text-[9px] uppercase font-bold text-[#4285F4] block">MOBILEPAY</span>
+                  <span className="text-[9px] uppercase font-bold text-[#4285F4] block">MobilePay</span>
                   <span className="text-base sm:text-lg font-mono font-bold text-[#171313]">{eventConfig.donation.mobilePay}</span>
                 </div>
                 <button

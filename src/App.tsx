@@ -70,7 +70,7 @@ export default function App() {
         {/* <PushpanjaliSection /> */}
 
         {/* Cultural Performances, Dhak & Bhog Programme */}
-        <CulturalProgramme />
+        {/* <CulturalProgramme /> */}
 
         {/* Venue Location, Directions & Interactive Map */}
         <VenueMap />

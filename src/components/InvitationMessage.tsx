@@ -72,20 +72,22 @@ export const InvitationMessage: React.FC = () => {
               {eventConfig.invitation.welcomeTextEn}
             </p>
 
-            {/* Bengali Welcome Subtext (A bit smaller) */}
-            <p className="font-['Noto_Serif_Bengali'] text-sm sm:text-base md:text-lg lg:text-xl text-[#8E2424] font-medium leading-relaxed mb-6 sm:mb-8 text-center">
-              {eventConfig.invitation.welcomeTextBn}
-            </p>
-
-            {/* English Invitation Paragraphs (Primary, a bit bigger text) */}
-            <div className="space-y-4 md:space-y-5 text-base sm:text-lg md:text-xl text-[#171313]/90 leading-relaxed font-sans text-left sm:text-center max-w-prose md:max-w-2xl lg:max-w-3xl mx-auto font-normal">
-              {eventConfig.invitation.paragraphsEn.map((para, i) => (
-                <p key={`en-${i}`} className="leading-relaxed">{para}</p>
+            {/* Bengali Welcome Paragraphs */}
+            <div className="font-['Noto_Serif_Bengali'] text-sm sm:text-base md:text-lg lg:text-xl text-[#8E2424] font-medium leading-relaxed mb-6 sm:mb-8 space-y-3 text-center">
+              {eventConfig.invitation.welcomeTextBn.map((para, i) => (
+                <p key={`welcome-bn-${i}`} className="leading-relaxed">{para}</p>
               ))}
             </div>
 
+            {/* English Invitation Paragraphs (Primary, a bit bigger text) */}
+            {/* <div className="space-y-4 md:space-y-5 text-base sm:text-lg md:text-xl text-[#171313]/90 leading-relaxed font-sans text-left sm:text-center max-w-prose md:max-w-2xl lg:max-w-3xl mx-auto font-normal">
+              {eventConfig.invitation.paragraphsEn.map((para, i) => (
+                <p key={`en-${i}`} className="leading-relaxed">{para}</p>
+              ))}
+            </div> */}
+
             {/* Bengali Invitation Letter Box (Slightly smaller text size) */}
-            <div className="mt-6 sm:mt-8 p-4 sm:p-6 md:p-8 rounded-2xl bg-[#F7F0E4]/80 border border-[#D4AF62]/50 text-left sm:text-center w-full shadow-xs">
+            {/* <div className="mt-6 sm:mt-8 p-4 sm:p-6 md:p-8 rounded-2xl bg-[#F7F0E4]/80 border border-[#D4AF62]/50 text-left sm:text-center w-full shadow-xs">
               <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#8E2424] mb-2.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#B8863B]" />
                 <span>বাংলা নিমন্ত্রণপত্র</span>
@@ -95,10 +97,10 @@ export const InvitationMessage: React.FC = () => {
                   <p key={`bn-${i}`} className="leading-relaxed">{para}</p>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Venue & Date Callout */}
-            <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm md:text-base font-semibold text-[#641A1A]">
+            {/* <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm md:text-base font-semibold text-[#641A1A]">
               <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#8E2424]/10 border border-[#8E2424]/20">
                 <Calendar className="w-4 h-4 text-[#8E2424]" />
                 <span>16 – 20 October 2026</span>
@@ -107,7 +109,7 @@ export const InvitationMessage: React.FC = () => {
                 <MapPin className="w-4 h-4 text-[#8E2424]" />
                 <span>{eventConfig.venue.address}, Denmark</span>
               </div>
-            </div>
+            </div> */}
 
             {/* Core Theme Motto */}
             <div className="mt-6 sm:mt-8 md:mt-10 pt-5 md:pt-6 border-t border-[#D4AF62]/40 w-full">

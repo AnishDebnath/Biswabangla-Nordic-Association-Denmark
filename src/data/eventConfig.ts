@@ -47,7 +47,7 @@ export interface EventConfig {
     headingEn: string;
     headingBn: string;
     welcomeTextEn: string;
-    welcomeTextBn: string;
+    welcomeTextBn: string[];
     themeMottoEn: string;
     themeMottoBn: string;
     paragraphsEn: string[];
@@ -163,7 +163,10 @@ export const eventConfig: EventConfig = {
     headingEn: "INVITATION TO DURGA PUJA 2026",
     headingBn: "সর্বজনীন দুর্গোৎসব ২০২৬ — সাদর আমন্ত্রণ",
     welcomeTextEn: "BiswaBangla Nordic Association takes immense joy and pride in inviting you all to our 5th Annual Durga Puja Celebration!",
-    welcomeTextBn: "মাননীয় মহাশয়/মহাশয়া, প্রতি বছরের ন্যায় এ বছরও বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন দুর্গাপূজা কমিটি ২০২৬-এর পরিচালনায় সর্বজনীন দুর্গোৎসবের আয়োজন করা হয়েছে।",
+    welcomeTextBn: [
+      "মাননীয় মহাশয়/মহাশয়া, প্রতি বছরের ন্যায় এ বছরও বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন দুর্গাপূজা কমিটি ২০২৬-এর পরিচালনায় সর্বজনীন দুর্গোৎসবের আয়োজন করা হয়েছে।",
+      "উক্ত পুজোর দিনগুলিতে আপনার উপস্থিতি ও সহযোগিতা বিশ্ববাংলা নর্ডিক অ্যাসোসিয়েশন এর ২০২৬ সর্বজনীন দুর্গাপূজা কমিটির সকল সদস্যবৃন্দের পক্ষ থেকে একান্তভাবে আমরা কামনা করি।"
+    ],
     themeMottoEn: "UNITY • HERITAGE • CULTURE • COMPASSION",
     themeMottoBn: "ঐক্য, সংস্কৃতি ও উৎসবের গৌরবময় ৫ বছর!",
     paragraphsEn: [
@@ -233,7 +236,7 @@ export const eventConfig: EventConfig = {
         day: "Maha Dashami",
         bengaliDay: "মহাদশমী",
         date: "Tuesday, 20 October 2026",
-        timings: ["Puja Start: 10:00 AM", "Pushpanjali: 12:00 PM", "Lunch: 1:30 PM", "Closing: 5:00 PM"],
+        timings: ["Puja Start: 10:00 AM", "Pushpanjali: 12:00 PM", "Devi Boron: 12:30 PM", "Lunch: 1:30 PM", "Closing: 5:00 PM"],
         notes: "Devi Boron, Sindoor Khela, Shantijal & auspicious Bijoya Dashami farewell",
       },
     ],
@@ -284,12 +287,12 @@ export const eventConfig: EventConfig = {
       dateSubtitle: "Sunday • Maha Ashtami",
       badge: "HIGHLIGHT",
       themeColor: "from-amber-700/30 to-red-950/40",
-      highlights: ["Puja Start (10:00 AM)", "Pushpanjali (12:00 PM)", "Lunch (1:30 PM)", "Adult Cultural Program (5:30 PM – 8:00 PM)", "Dinner (8:30 PM)"],
+      highlights: ["Puja Start (10:00 AM)", "Pushpanjali (12:00 PM)", "Lunch (1:30 PM)", "Cultural Program (5:30 PM – 8:00 PM)", "Dinner (8:30 PM)"],
       events: [
         { time: "10:00 AM", title: "Puja Start", bengaliTitle: "মহাঅষ্টমী পূজা আরম্ভ", description: "Solemn Maha Ashtami prayers and Chandi path." },
         { time: "12:00 PM", title: "Pushpanjali", bengaliTitle: "মহাঅষ্টমী পুষ্পাঞ্জলি", description: "The most sacred and revered Pushpanjali of the festival.", isHighlight: true },
         { time: "01:30 PM", title: "Lunch", bengaliTitle: "অষ্টমীর মহাতৃপ্তির ভোগ ও মধ্যাহ্নভোজ", description: "Delicious traditional Ashtami bhog and festive meal." },
-        { time: "05:30 PM – 08:00 PM", title: "Adult Cultural Program", bengaliTitle: "বড়দের সাংস্কৃতিক অনুষ্ঠান", description: "Performances by adult artists: Song, Dance, Instrument, Recitation, and other cultural presentations.", isHighlight: true },
+        { time: "05:30 PM – 08:00 PM", title: "Cultural Program", bengaliTitle: "সাংস্কৃতিক অনুষ্ঠান", description: "Performances by adult artists: Song, Dance, Instrument, Recitation, and other cultural presentations.", isHighlight: true },
         { time: "08:30 PM", title: "Dinner", bengaliTitle: "নৈশভোজ", description: "Festive dinner and evening gathering." },
       ],
     },
@@ -318,11 +321,12 @@ export const eventConfig: EventConfig = {
       bengaliName: "মঙ্গলবার, ২০শে অক্টোবর — বিজয়া দশমী",
       dateStr: "20 October 2026",
       dateSubtitle: "Tuesday • Maha Dashami",
-      highlights: ["Puja Start (10:00 AM)", "Pushpanjali (12:00 PM)", "Lunch (1:30 PM)", "Closing (5:00 PM)"],
+      highlights: ["Puja Start (10:00 AM)", "Pushpanjali (12:00 PM)", "Devi Boron (12:30 PM)", "Lunch (1:30 PM)", "Closing (5:00 PM)"],
       events: [
         { time: "10:00 AM", title: "Puja Start", bengaliTitle: "বিজয়া দশমী বিহিত পূজা", description: "Morning rituals concluding the 5-day worship." },
         { time: "12:00 PM", title: "Pushpanjali", bengaliTitle: "দশমী পুষ্পাঞ্জলি", description: "Final floral offering of Durga Puja 2026." },
-        { time: "01:30 PM", title: "Lunch & Devi Boron", bengaliTitle: "মধ্যাহ্নভোজ, সিঁদুর খেলা ও মিষ্টিমুখ", description: "Festive lunch followed by Devi Boron, Sindoor Khela, and mishtimukh." },
+        { time: "12:30 PM", title: "Devi Boron", bengaliTitle: "দেবী বিদায় ও সিঁদুর খেলা", description: "Devi Boron, Sindoor Khela, and mishtimukh farewell rituals." },
+        { time: "01:30 PM", title: "Lunch", bengaliTitle: "মধ্যাহ্নভোজ", description: "Festive Dashami community lunch." },
         { time: "05:00 PM", title: "Closing & Subho Bijoya", bengaliTitle: "পূজা সমাপন, শান্তিজল ও শুভ বিজয়া", description: "Emotional farewell with 'Aschhe bochhor abar hobe', Shantijal, and Bijoya greetings.", isHighlight: true },
       ],
     },
@@ -380,7 +384,7 @@ export const eventConfig: EventConfig = {
   donation: {
     headingEn: "APPEAL FOR GENEROUS DONATIONS",
     headingBn: "শারদোৎসব ২০২৬ — আন্তরিক আর্থিক অনুদানের আবেদন",
-    appealTextEn: "As the rhythmic beats of the dhaak approach, we prepare to welcome Maa Durga to our home away from home. The grand celebration of Durga Puja 2026 is made possible through your collective warmth, spirit, and generous contributions. We kindly request all members and families to step forward and support this year’s Durgotsav. This festival belongs to all of us — any contribution given from the heart brings us closer to a memorable celebration of Durga Puja 2026.",
+    appealTextEn: "This festival belongs to all of us - any contribution given from the heart brings us closer to a memorable celebration of Durga Puja 2026.",
     appealTextBn: "প্রিয় সদস্য ও ভক্তবৃন্দ, দূর প্রবাসে মায়ের আবাহন আমাদের সকলের যৌথ প্রচেষ্টা ও আন্তরিক সহযোগিতার ফলেই সার্থক হয়ে ওঠে। দুর্গাপূজা ২০২৬ সুন্দর ও সফলভাবে সম্পন্ন করতে আপনাদের সকলের মুক্তহস্তে অনুদান একান্তভাবে কাম্য।",
     familyContribution: "DKK 1,500",
     singleContribution: "DKK 1,000",

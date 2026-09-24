@@ -28,21 +28,21 @@ export const PujaInfo: React.FC = () => {
     {
       id: 'card-contribution',
       icon: <CreditCard className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 text-[#8E2424]" />,
-      label: 'CONTRIBUTION & MOBILEPAY',
+      label: 'Generous Contribution',
       bengaliLabel: 'আর্থিক অনুদান',
       primaryText: `Family: ${eventConfig.donation.familyContribution} • Single: ${eventConfig.donation.singleContribution}`,
-      secondaryText: `MobilePay: ${eventConfig.donation.mobilePay} • Reg: ${eventConfig.donation.regNo} A/C: ${eventConfig.donation.accountNo}`,
+      secondaryText: 'This festival belongs to all us',
       tag: 'Community Support',
     },
-    {
-      id: 'card-organizer',
-      icon: <Building2 className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 text-[#8E2424]" />,
-      label: 'ORGANIZED BY',
-      bengaliLabel: 'আয়োজক পর্ষদ',
-      primaryText: eventConfig.organization.name,
-      secondaryText: `${eventConfig.organization.edition} (${eventConfig.organization.bengaliEdition})`,
-      tag: '5th Year Milestone',
-    },
+    // {
+    //   id: 'card-organizer',
+    //   icon: <Building2 className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 text-[#8E2424]" />,
+    //   label: 'ORGANIZED BY',
+    //   bengaliLabel: 'আয়োজক পর্ষদ',
+    //   primaryText: eventConfig.organization.name,
+    //   secondaryText: `${eventConfig.organization.edition} (${eventConfig.organization.bengaliEdition})`,
+    //   tag: '5th Year Milestone',
+    // },
   ];
 
   return (
@@ -58,12 +58,12 @@ export const PujaInfo: React.FC = () => {
           <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#B8863B]" />
           <span>Essential Details</span>
         </div>
-        
+
         {/* English Header (Bigger) */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-[#641A1A] font-bold tracking-tight">
           PUJA ESSENTIALS & LOCATION
         </h2>
-        
+
         {/* Bengali Subheading (A bit smaller) */}
         <p className="text-sm sm:text-base md:text-lg lg:text-xl font-['Noto_Serif_Bengali'] text-[#8E2424] font-semibold tracking-wider mt-1 md:mt-1.5">
           উৎসবের গুরুত্বপূর্ণ তথ্যাবলী ও স্থান
@@ -72,8 +72,8 @@ export const PujaInfo: React.FC = () => {
         <AlponaDivider className="my-2.5 sm:my-3 md:my-5 max-w-xs md:max-w-sm text-[#D4AF62] mx-auto w-full" />
       </SectionHeader>
 
-      {/* 4 Information Cards Grid */}
-      <AnimatedGrid staggerDelay={0.1} delay={0.2} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 md:gap-5 lg:gap-3.5 xl:gap-6">
+      {/* 3 Information Cards Grid */}
+      <AnimatedGrid staggerDelay={0.1} delay={0.2} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 md:gap-5 lg:gap-4 xl:gap-6 max-w-3xl lg:max-w-5xl mx-auto w-full">
         {infoCards.map((card, index) => (
           <AnimatedCard key={card.id} index={index} variant="fadeUp" className="bg-[#FFF9EF]/95 border border-[#D4AF62]/50 rounded-2xl md:rounded-3xl p-4 sm:p-5 lg:p-4 xl:p-6 shadow-md hover:shadow-lg hover:border-[#B8863B] transition-all duration-300 flex flex-col justify-between group">
             <div>
