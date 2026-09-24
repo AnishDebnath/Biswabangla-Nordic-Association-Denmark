@@ -157,7 +157,7 @@ export const eventConfig: EventConfig = {
     year: "2026",
     bengaliGreeting: "শুভ শারদীয়া",
     invitationLine: "Carrying the sacred message of Sharodiya and the divine arrival of Goddess Durga, Biswabangla Nordic Association warmly invites you and your family to celebrate the Sarbojanin Shri Shri Durga Puja 2026 in Denmark.",
-    targetCountdownDate: "2026-10-16T16:00:00+02:00",
+    targetCountdownDate: "2026-10-16T10:00:00+02:00",
   },
   invitation: {
     headingEn: "INVITATION TO DURGA PUJA 2026",
