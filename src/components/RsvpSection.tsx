@@ -29,7 +29,7 @@ export const RsvpSection: React.FC = () => {
     phone: '',
     adults: 2,
     children: 0,
-    days: ['saptami', 'ashtami', 'nabami'],
+    days: ['saptami', 'ashtami', 'navami'],
     dietary: 'traditional_bhog',
     message: '',
     wantsUpdates: true,
@@ -54,8 +54,10 @@ export const RsvpSection: React.FC = () => {
 
   const handleDayToggle = (dayKey: string) => {
     setFormData((prev) => {
-      const exists = prev.days.includes(dayKey);
-      const updated = exists ? prev.days.filter((d) => d !== dayKey) : [...prev.days, dayKey];
+      const validKeys = availableDays.map((d) => d.key);
+      const cleaned = [...new Set(prev.days.filter((d) => validKeys.includes(d)))];
+      const exists = cleaned.includes(dayKey);
+      const updated = exists ? cleaned.filter((d) => d !== dayKey) : [...cleaned, dayKey];
       return { ...prev, days: updated };
     });
   };
@@ -65,8 +67,11 @@ export const RsvpSection: React.FC = () => {
     setIsSubmitting(true);
 
     setTimeout(() => {
+      const validKeys = availableDays.map((d) => d.key);
+      const cleanedDays = [...new Set(formData.days.filter((d) => validKeys.includes(d)))];
       const finalRecord: RsvpData = {
         ...formData,
+        days: cleanedDays,
         submittedAt: new Date().toISOString(),
       };
       try {
@@ -99,7 +104,9 @@ export const RsvpSection: React.FC = () => {
 
   const handleEditRsvp = () => {
     if (submittedData) {
-      setFormData(submittedData);
+      const validKeys = availableDays.map((d) => d.key);
+      const cleanedDays = [...new Set((submittedData.days ?? []).filter((d) => validKeys.includes(d)))];
+      setFormData({ ...submittedData, days: cleanedDays });
     }
     setIsSubmitted(false);
   };
@@ -363,7 +370,7 @@ export const RsvpSection: React.FC = () => {
                       <span>Attending Days</span>
                     </span>
                     <span className="text-[11px] sm:text-xs md:text-sm text-[#8E2424] font-normal">
-                      {formData.days.length} selected
+                      {formData.days.length} days selected
                     </span>
                   </label>
 
@@ -376,29 +383,25 @@ export const RsvpSection: React.FC = () => {
                           type="button"
                           key={day.key}
                           onClick={() => handleDayToggle(day.key)}
-                          className={`p-3 sm:p-3.5 md:p-4 rounded-xl sm:rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
-                            isLastItem ? 'col-span-2 sm:col-span-1' : 'col-span-1'
-                          } ${
-                            isChecked
+                          className={`p-3 sm:p-3.5 md:p-4 rounded-xl sm:rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${isLastItem ? 'col-span-2 sm:col-span-1' : 'col-span-1'
+                            } ${isChecked
                               ? 'bg-[#8E2424] text-[#FFF9EF] border-[#D4AF62] shadow-sm'
                               : 'bg-[#FFF9EF] text-[#171313] border-[#D4AF62]/40 hover:border-[#B8863B]'
-                          }`}
+                            }`}
                         >
                           <div className="flex items-center justify-between">
                             <span className="text-xs sm:text-sm md:text-base font-bold font-serif">{day.label}</span>
                             <div
-                              className={`w-4 h-4 rounded flex items-center justify-center ${
-                                isChecked ? 'bg-[#D4AF62] text-[#171313]' : 'border border-[#D4AF62]'
-                              }`}
+                              className={`w-4 h-4 rounded flex items-center justify-center ${isChecked ? 'bg-[#D4AF62] text-[#171313]' : 'border border-[#D4AF62]'
+                                }`}
                             >
                               {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                             </div>
                           </div>
                           <div className="mt-1 flex items-center justify-between text-[11px] sm:text-xs">
                             <span
-                              className={`font-['Noto_Serif_Bengali'] font-semibold ${
-                                isChecked ? 'text-[#FFF9EF]/90' : 'text-[#8E2424]'
-                              }`}
+                              className={`font-['Noto_Serif_Bengali'] font-semibold ${isChecked ? 'text-[#FFF9EF]/90' : 'text-[#8E2424]'
+                                }`}
                             >
                               {day.bnLabel}
                             </span>
