@@ -4,6 +4,7 @@ node_modules/
 # Build outputs
 build/
 dist/
+server.js
 *.local
 
 # Environment files
@@ -13,6 +14,9 @@ dist/
 .env.test.local
 .env.production.local
 !.env.example
+
+# Deployment
+.vercel/
 
 # IDE/Editor
 .idea/
