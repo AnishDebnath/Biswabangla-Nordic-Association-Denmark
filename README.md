@@ -1,8 +1,6 @@
 # Biswabangla Nordic Association — Durga Puja 2026
 
-Official single-page website for the **5th Annual Durga Puja Celebration** organised by the **Biswabangla Nordic Association**, Denmark.
-
-**Live site:** [https://biswabanglanordic.dk](https://biswabanglanordic.dk)
+Official invitation website for the **5th Annual Durga Puja Celebration** organised by the **Biswabangla Nordic Association**, Denmark.
 
 ---
 
