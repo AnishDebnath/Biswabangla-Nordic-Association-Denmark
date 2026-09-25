@@ -412,7 +412,7 @@ export const eventConfig: EventConfig = {
   },
   contact: {
     organization: "Biswabangla Nordic Association",
-    email: "contact@biswabanglanordic.dk",
+    email: "bnadenmark@yahoo.com",
     phones: ["+45 60 63 70 78"],
     phoneList: [
       {

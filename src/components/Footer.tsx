@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowUp, Facebook, Heart, Phone, MapPin } from 'lucide-react';
+import { ArrowUp, Facebook, Heart, Phone, MapPin, Mail } from 'lucide-react';
 import { eventConfig } from '../data/eventConfig';
 import { AlponaMandala, AlponaDivider } from './DecorativeAlpona';
 import patternBg from '../assets/images/festive_bengali_pattern_1789856534168.jpg';
@@ -140,6 +140,18 @@ export const Footer: React.FC = () => {
           >
             <Phone className="w-3.5 h-3.5 text-[#D4AF62] shrink-0" />
             <span>{eventConfig.contact.phoneList[0].number}</span>
+          </motion.a>
+
+          {/* Email */}
+          <motion.a
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.95 }}
+            href={`mailto:${eventConfig.contact.email}`}
+            className="px-3.5 py-1.5 rounded-full bg-[#FFF9EF]/5 hover:bg-[#FFF9EF]/15 border border-[#D4AF62]/30 hover:border-[#D4AF62] text-[#FFF9EF]/90 hover:text-[#D4AF62] transition-colors flex items-center gap-1.5 whitespace-nowrap"
+          >
+            <Mail className="w-3.5 h-3.5 text-[#D4AF62] shrink-0" />
+            <span>{eventConfig.contact.email}</span>
           </motion.a>
 
           <motion.a

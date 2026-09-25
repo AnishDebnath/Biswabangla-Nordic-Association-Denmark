@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Send, CheckCircle2, HeartHandshake, CreditCard, Landmark, Copy, Check, MessageCircle, User, RefreshCw } from 'lucide-react';
+import { Phone, Send, CheckCircle2, HeartHandshake, CreditCard, Landmark, Copy, Check, MessageCircle, User, RefreshCw, Mail } from 'lucide-react';
 import { eventConfig } from '../data/eventConfig';
 import { AlponaDivider } from './DecorativeAlpona';
 import { ScrollSection } from './ScrollSection';
@@ -213,6 +213,24 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Email */}
+            <div className="pt-2 border-t border-[#D4AF62]/20">
+              <span className="text-[10px] sm:text-xs uppercase font-bold text-[#8E2424] block tracking-wider mb-2">
+                Email
+              </span>
+              <a
+                href={`mailto:${eventConfig.contact.email}`}
+                className="inline-flex items-center gap-2 p-3 sm:p-4 rounded-xl md:rounded-2xl bg-[#F7F0E4]/80 border border-[#D4AF62]/30 hover:border-[#B8863B] transition-colors w-full"
+              >
+                <div className="p-2 rounded-lg bg-[#8E2424] text-[#FFF9EF] shrink-0">
+                  <Mail className="w-4 h-4 md:w-5 md:h-5 text-[#D4AF62]" />
+                </div>
+                <span className="text-sm sm:text-base font-bold font-mono text-[#641A1A] break-all">
+                  {eventConfig.contact.email}
+                </span>
+              </a>
             </div>
 
             {/* Social Channels */}
